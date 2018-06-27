@@ -47,8 +47,18 @@ public class Reporter {
         return data;
     }
     
-    public boolean createRationaleReport(String nameFile) {
-        return reportStrategy.generateReport(getRationaleInformation(),setNameFile(nameFile));
+    public boolean createRationaleReportByAll(String nameFile) {
+        return reportStrategy.generateReportByAll(getRationaleInformation(),JavaUtil.setNameFile(nameFile));
+    }
+    public boolean createRationaleReports(){
+        boolean flag = false;
+        
+        getRationaleInformation().keySet().forEach((information) -> {
+            //Información del Rationale
+            Rationale rationale = getRationaleInformation().get(information);
+            reportStrategy.generateReport(information, rationale);
+        });
+        return flag;
     }
     
     public void setStrategy(ReportStrategy strategy) {
@@ -56,11 +66,6 @@ public class Reporter {
     }
     
     
-    private String setNameFile(String nameFile) {
-        nameFile = "reports/"+nameFile+".pdf";
-        File file = new File(nameFile);
-        file.getParentFile().mkdirs();
-        return nameFile;
-    }
+    
     
 }

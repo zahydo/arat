@@ -139,7 +139,7 @@ public class GraphicMain extends javax.swing.JFrame {
         if (!packageName.equals("")) {
             ReportStrategy report = new ItextReport();
             Reporter reporter = new Reporter(report,packageName);
-            if (reporter.createRationaleReport("ArchitecturalRationaleReport")) {
+            if (reporter.createRationaleReportByAll("ArchitecturalRationaleReport")) {
                 JOptionPane.showMessageDialog(null, "Reporte de Rationale creado satistactoriamente.");
             }else{
                 JOptionPane.showMessageDialog(null, "No se puede crear el reporte, intenta cerrar el archivo si está abierto.");
