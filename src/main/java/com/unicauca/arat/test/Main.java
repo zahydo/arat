@@ -17,9 +17,9 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-       // RationaleClient.openGraphicWindow();
+        RationaleClient.openGraphicWindow();
         RationaleClient.generateReport("com");
         RationaleClient.generateReportsByOne("com");
     }
-    
+
 }

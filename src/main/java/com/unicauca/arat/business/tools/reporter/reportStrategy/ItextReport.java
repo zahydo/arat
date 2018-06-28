@@ -5,6 +5,7 @@
  */
 package com.unicauca.arat.business.tools.reporter.reportStrategy;
 
+import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
@@ -30,24 +31,21 @@ import java.io.FileNotFoundException;
  *
  * @author sahydo
  */
-public class ItextReport  implements ReportStrategy{
-    private Document document;
+public class ItextReport implements ReportStrategy {
 
-    
-    @Override
-    public void createInformation(HashMap<Information,Rationale> rationaleHash) {
+    public void createInformation(HashMap<Information, Rationale> rationaleHash, Document document) {
         int cont = 1;
         for (Information information : rationaleHash.keySet()) {
             try {
                 //Información del Rationale
                 Rationale rationale = rationaleHash.get(information);
                 if (!rationale.hiden()) {
-                    document.add(new Paragraph("Rationale: "+cont, new Font(Font.FontFamily.COURIER, 15)));
-                    document.add(new Paragraph("id: "+rationale.id(), new Font(Font.FontFamily.HELVETICA, 12)));
-                    document.add(new Paragraph("Type: "+information.getType(), new Font(Font.FontFamily.HELVETICA, 12)));
-                    document.add(new Paragraph("Path: "+information.getPath(), new Font(Font.FontFamily.HELVETICA, 12)));
-                    document.add(new Paragraph("Name: "+information.getName(), new Font(Font.FontFamily.HELVETICA, 12)));
-                    createRationaleInfo(rationale);
+                    document.add(new Paragraph("Rationale: " + cont, new Font(Font.FontFamily.COURIER, 15)));
+                    document.add(new Paragraph("id: " + rationale.id(), new Font(Font.FontFamily.HELVETICA, 12)));
+                    document.add(new Paragraph("Type: " + information.getType(), new Font(Font.FontFamily.HELVETICA, 12)));
+                    document.add(new Paragraph("Path: " + information.getPath(), new Font(Font.FontFamily.HELVETICA, 12)));
+                    document.add(new Paragraph("Name: " + information.getName(), new Font(Font.FontFamily.HELVETICA, 12)));
+                    createRationaleInfo(document, rationale);
                     cont++;
                 }
             } catch (DocumentException ex) {
@@ -55,9 +53,8 @@ public class ItextReport  implements ReportStrategy{
             }
         }
     }
-    
-    @Override
-    public void createRationaleInfo(Rationale rationale){
+
+    public void createRationaleInfo(Document document, Rationale rationale) {
         List quality_attributes = new List(List.UNORDERED);
         List causes = new List(List.UNORDERED);
         List tactics = new List(List.UNORDERED);
@@ -113,21 +110,16 @@ public class ItextReport  implements ReportStrategy{
         }
     }
 
-    @Override
-    public boolean generateReportByAll(HashMap<Information,Rationale> rationaleInformation,String dest) {
-        boolean flag = false;
+    public void createHeader(Document document) {
         try {
-            document= new Document();
-            PdfWriter.getInstance(document, new FileOutputStream(dest));
-            document.open();
             PdfPTable table = new PdfPTable(3);
-            table.setWidths(new int[]{ 1, 1,4});
+            table.setWidths(new int[]{1, 1, 4});
             PdfPCell cell;
             cell = new PdfPCell(new Paragraph("Architectural Rationale Annotations Tool", new Font(Font.FontFamily.HELVETICA, 15)));
             cell.setColspan(3);
             cell.setHorizontalAlignment(Element.ALIGN_CENTER);
             table.addCell(cell);
-            cell = new PdfPCell(Image.getInstance("resources/unicauca.png"),true);
+            cell = new PdfPCell(Image.getInstance("resources/unicauca.png"), true);
             cell.setRowspan(10);
             cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
             cell.setPadding(2);
@@ -142,14 +134,24 @@ public class ItextReport  implements ReportStrategy{
             table.addCell("Santiago Hyun Dorado");
             table.addCell("Lanzamiento:");
             table.addCell("Julio de 2018");
-            cell = new PdfPCell(new Paragraph("A continuación, se listan los elementos de código marcados con la anotación @Rationale", new Font(Font.FontFamily.HELVETICA, 11)));
-            cell.setColspan(3);
-            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-            table.addCell(cell);
             table.setWidthPercentage(100);
             document.add(table);
-            //Este método crea plantillas diferentes de acuerdo a la implementación de este método abstracto
-            createInformation(rationaleInformation);
+        } catch (BadElementException ex) {
+            Logger.getLogger(ItextReport.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException | DocumentException ex) {
+            Logger.getLogger(ItextReport.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @Override
+    public boolean generateReportByAll(HashMap<Information, Rationale> rationaleInformation, String dest) {
+        boolean flag = false;
+        try {
+            Document document = new Document();
+            PdfWriter.getInstance(document, new FileOutputStream(dest));
+            document.open();
+            createHeader(document);
+            createInformation(rationaleInformation, document);
             document.close();
             flag = true;
         } catch (DocumentException | IOException ex) {
@@ -159,82 +161,89 @@ public class ItextReport  implements ReportStrategy{
     }
 
     @Override
-    public boolean generateReport(Information information, Rationale rationale) {
-        boolean flag=false;
-        try {
-            Document document = new Document();
-            PdfWriter.getInstance(document, new FileOutputStream(JavaUtil.setNameFile(information.getName())));
-            document.open();
+    public boolean generateReport(HashMap<Information, Rationale> rationaleInformation) {
+        boolean flag = false;
+
+        rationaleInformation.keySet().stream().map((information) -> {
+            Document currentDocument = new Document();
+            Rationale rationale = rationaleInformation.get(information);
+            try {
+                PdfWriter.getInstance(currentDocument, new FileOutputStream(JavaUtil.setNameFile(rationale.id()+"-"+information.getType()+"-"+information.getName())));
+                currentDocument.open();
+                createHeader(currentDocument);
+            } catch (FileNotFoundException | DocumentException ex) {
+                Logger.getLogger(ItextReport.class.getName()).log(Level.SEVERE, null, ex);
+            }
             try {
                 //Información del Rationale
                 if (!rationale.hiden()) {
-                    document.add(new Paragraph("id: "+rationale.id(), new Font(Font.FontFamily.HELVETICA, 12)));
-                    document.add(new Paragraph("Type: "+information.getType(), new Font(Font.FontFamily.HELVETICA, 12)));
-                    document.add(new Paragraph("Path: "+information.getPath(), new Font(Font.FontFamily.HELVETICA, 12)));
-                    document.add(new Paragraph("Name: "+information.getName(), new Font(Font.FontFamily.HELVETICA, 12)));
-                }
-                List quality_attributes = new List(List.UNORDERED);
-                List causes = new List(List.UNORDERED);
-                List tactics = new List(List.UNORDERED);
-                List paterns = new List(List.UNORDERED);
-                List alternatives = new List(List.UNORDERED);
-                List decisions = new List(List.UNORDERED);
-                List reasons = new List(List.UNORDERED);
-                try {
-                    //Atributos de calidad
-                    document.add(new Paragraph("Atributos de calidad: ", new Font(Font.FontFamily.HELVETICA, 14)));
-                    for (Rationale.AtributoDeCalidad attribute : rationale.atributos_de_calidad()) {
-                        quality_attributes.add(attribute.toString());
+                    currentDocument.add(new Paragraph("id: " + rationale.id(), new Font(Font.FontFamily.HELVETICA, 12)));
+                    currentDocument.add(new Paragraph("Type: " + information.getType(), new Font(Font.FontFamily.HELVETICA, 12)));
+                    currentDocument.add(new Paragraph("Path: " + information.getPath(), new Font(Font.FontFamily.HELVETICA, 12)));
+                    currentDocument.add(new Paragraph("Name: " + information.getName(), new Font(Font.FontFamily.HELVETICA, 12)));
+
+                    List quality_attributes = new List(List.UNORDERED);
+                    List causes = new List(List.UNORDERED);
+                    List tactics = new List(List.UNORDERED);
+                    List paterns = new List(List.UNORDERED);
+                    List alternatives = new List(List.UNORDERED);
+                    List decisions = new List(List.UNORDERED);
+                    List reasons = new List(List.UNORDERED);
+                    try {
+                        //Atributos de calidad
+                        currentDocument.add(new Paragraph("Atributos de calidad: ", new Font(Font.FontFamily.HELVETICA, 14)));
+                        for (Rationale.AtributoDeCalidad attribute : rationale.atributos_de_calidad()) {
+                            quality_attributes.add(attribute.toString());
+                        }
+                        currentDocument.add(quality_attributes);
+                        //Causas
+                        currentDocument.add(new Paragraph("Causas: ", new Font(Font.FontFamily.HELVETICA, 14)));
+                        for (String causa : rationale.causas()) {
+                            causes.add(causa);
+                        }
+                        currentDocument.add(causes);
+                        //Tácticas
+                        currentDocument.add(new Paragraph("Tácticas: ", new Font(Font.FontFamily.HELVETICA, 14)));
+                        for (String tactica : rationale.tacticas()) {
+                            tactics.add(tactica);
+                        }
+                        currentDocument.add(tactics);
+                        //Patrones
+                        currentDocument.add(new Paragraph("Patrones: ", new Font(Font.FontFamily.HELVETICA, 14)));
+                        for (String patron : rationale.patrones()) {
+                            paterns.add(patron);
+                        }
+                        currentDocument.add(paterns);
+                        //Alternativas
+                        currentDocument.add(new Paragraph("Alternativas: ", new Font(Font.FontFamily.HELVETICA, 14)));
+                        for (String alternativa : rationale.alternativas()) {
+                            alternatives.add(alternativa);
+                        }
+                        currentDocument.add(alternatives);
+                        //Decisiones
+                        currentDocument.add(new Paragraph("Decisiones: ", new Font(Font.FontFamily.HELVETICA, 14)));
+                        for (String decision : rationale.registro_de_decisiones()) {
+                            decisions.add(decision);
+                        }
+                        currentDocument.add(decisions);
+                        //Razones
+                        currentDocument.add(new Paragraph("Razones: ", new Font(Font.FontFamily.HELVETICA, 14)));
+                        for (String reason : rationale.razones()) {
+                            reasons.add(reason);
+                        }
+                        currentDocument.add(reasons);
+                    } catch (DocumentException ex) {
+                        Logger.getLogger(ItextReport.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    document.add(quality_attributes);
-                    //Causas
-                    document.add(new Paragraph("Causas: ", new Font(Font.FontFamily.HELVETICA, 14)));
-                    for (String causa : rationale.causas()) {
-                        causes.add(causa);
-                    }
-                    document.add(causes);
-                    //Tácticas
-                    document.add(new Paragraph("Tácticas: ", new Font(Font.FontFamily.HELVETICA, 14)));
-                    for (String tactica : rationale.tacticas()) {
-                        tactics.add(tactica);
-                    }
-                    document.add(tactics);
-                    //Patrones
-                    document.add(new Paragraph("Patrones: ", new Font(Font.FontFamily.HELVETICA, 14)));
-                    for (String patron : rationale.patrones()) {
-                        paterns.add(patron);
-                    }
-                    document.add(paterns);
-                    //Alternativas
-                    document.add(new Paragraph("Alternativas: ", new Font(Font.FontFamily.HELVETICA, 14)));
-                    for (String alternativa : rationale.alternativas()) {
-                        alternatives.add(alternativa);
-                    }
-                    document.add(alternatives);
-                    //Decisiones
-                    document.add(new Paragraph("Decisiones: ", new Font(Font.FontFamily.HELVETICA, 14)));
-                    for (String decision : rationale.registro_de_decisiones()) {
-                        decisions.add(decision);
-                    }
-                    document.add(decisions);
-                    //Razones
-                    document.add(new Paragraph("Razones: ", new Font(Font.FontFamily.HELVETICA, 14)));
-                    for (String reason : rationale.razones()) {
-                        reasons.add(reason);
-                    }
-                    document.add(reasons);
-                } catch (DocumentException ex) {
-                    Logger.getLogger(ItextReport.class.getName()).log(Level.SEVERE, null, ex);
                 }
             } catch (DocumentException ex) {
                 Logger.getLogger(ItextReport.class.getName()).log(Level.SEVERE, null, ex);
             }
-            document.close();
-            flag=true;
-        } catch (FileNotFoundException | DocumentException ex) {
-            Logger.getLogger(ItextReport.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            return currentDocument;
+        }).forEachOrdered((currentDocument) -> {
+            currentDocument.close();
+        });
         return flag;
-        
+
     }
 }

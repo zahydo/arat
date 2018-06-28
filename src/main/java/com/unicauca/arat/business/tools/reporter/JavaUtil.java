@@ -12,8 +12,9 @@ import java.io.File;
  * @author cscolano
  */
 public class JavaUtil {
+
     public static String setNameFile(String nameFile) {
-        nameFile = "reports/"+nameFile+".pdf";
+        nameFile = "reports/" + nameFile + ".pdf";
         File file = new File(nameFile);
         file.getParentFile().mkdirs();
         return nameFile;

@@ -5,9 +5,8 @@ import com.unicauca.arat.business.model.Rationale;
 import java.util.HashMap;
 
 public interface ReportStrategy {
-    //
-    public abstract void createInformation(HashMap<Information,Rationale> rationaleInformation);
-    public abstract void createRationaleInfo(Rationale rationale);
-    public abstract boolean generateReportByAll(HashMap<Information,Rationale> rationaleInformation,String dest);
-    public abstract boolean generateReport(Information information, Rationale rationale);
+
+    public abstract boolean generateReportByAll(HashMap<Information, Rationale> rationaleInformation, String dest);
+
+    public abstract boolean generateReport(HashMap<Information, Rationale> rationaleInformation);
 }

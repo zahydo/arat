@@ -14,11 +14,11 @@ import org.reflections.util.ConfigurationBuilder;
 import org.reflections.util.FilterBuilder;
 //import org.unicauca.annotations.model.Component;
 
-
 public class AnnotationsReflection {
-    private Reflections reflections;
-    
-    public AnnotationsReflection(String modelPackage){
+
+    private final Reflections reflections;
+
+    public AnnotationsReflection(String modelPackage) {
         //Se debe especificar el tipo de scanners que se quieren ejecutar (Type y Method)
         //Se debe especificar la url del paquete que se quiere inspeccionar
         //se debe agregar un filtro para realizar las busquedas en el paquete
@@ -32,11 +32,13 @@ public class AnnotationsReflection {
                         .filterInputsBy(new FilterBuilder().includePackage(modelPackage))
         );
     }
-    public Set<Method> getMethodsAnnotatedWithRationale(){
+
+    public Set<Method> getMethodsAnnotatedWithRationale() {
         return reflections.getMethodsAnnotatedWith(Rationale.class);
     }
-    public Set<Class<?>> getClasesAnnotatedWhitRationale(){
+
+    public Set<Class<?>> getClasesAnnotatedWhitRationale() {
         return reflections.getTypesAnnotatedWith(Rationale.class);
     }
-    
+
 }

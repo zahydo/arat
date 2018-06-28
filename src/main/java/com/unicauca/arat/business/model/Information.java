@@ -10,6 +10,7 @@ package com.unicauca.arat.business.model;
  * @author sahydo
  */
 public class Information {
+
     private String path;
     private String name;
     private String type;
@@ -46,6 +47,5 @@ public class Information {
     public void setType(String type) {
         this.type = type;
     }
-    
-    
+
 }

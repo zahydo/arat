@@ -22,17 +22,29 @@ import java.lang.annotation.Target;
 //Retención del archivo de clases en tiempo de ejecución para acceder por Reflección
 @Retention(RUNTIME)
 //Objetivo de anotación: métodos, clases y clases pagacke-info que representan los paquetes
-@Target({METHOD,PACKAGE,TYPE})
+@Target({METHOD, PACKAGE, TYPE})
 public @interface Rationale {
-    enum AtributoDeCalidad {ADECUACION_FUNCIONAL, EFICIENCIA_DESEMPENIO, COMPATIBILIDAD, USABILIDAD,
-                    FIABILIDAD, SEGURIDAD, MANTENIBILIDAD, PORTABILIDAD}
+
+    enum AtributoDeCalidad {
+        ADECUACION_FUNCIONAL, EFICIENCIA_DESEMPENIO, COMPATIBILIDAD, USABILIDAD,
+        FIABILIDAD, SEGURIDAD, MANTENIBILIDAD, PORTABILIDAD
+    }
+
     String id() default "";
+
     boolean hiden() default false;
+
     AtributoDeCalidad[] atributos_de_calidad(); //1
+
     String[] causas();//2
+
     String[] tacticas() default {};//3
+
     String[] patrones() default {};//4
+
     String[] alternativas() default {}; //5
+
     String[] registro_de_decisiones();//6
+
     String[] razones();//7
 }

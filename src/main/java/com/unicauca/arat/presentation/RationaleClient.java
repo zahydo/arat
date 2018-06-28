@@ -13,31 +13,32 @@ import com.unicauca.arat.business.tools.reporter.reportStrategy.ItextReport;
  *
  * @author sahydo
  */
-public class RationaleClient extends Thread{
-    
-    
-    public static void openGraphicWindow(){
+public class RationaleClient extends Thread {
+
+    public static void openGraphicWindow() {
         GraphicMain main = new GraphicMain();
         main.setVisible(true);
     }
-    public static void generateReport(String packageName){
+
+    public static void generateReport(String packageName) {
         ReportStrategy report = new ItextReport();
-        Reporter reporter = new Reporter(report,packageName);
+        Reporter reporter = new Reporter(report, packageName);
         if (reporter.createRationaleReportByAll("ArchitecturalRationaleReport")) {
             System.out.println("Reporte de Rationale creado satistactoriamente.");
-        }else{
-            System.out.println("No se puede crear el reporte, intenta cerrar el archivo si está abierto.");
-        }
-    }
-    public static void generateReportsByOne(String packageName){
-        ReportStrategy report = new ItextReport();
-        Reporter reporter = new Reporter(report,packageName);
-        if (reporter.createRationaleReports()) {
-            System.out.println("Reporte de Rationale creado satistactoriamente.");
-        }else{
+        } else {
             System.out.println("No se puede crear el reporte, intenta cerrar el archivo si está abierto.");
         }
     }
 
-    
+    public static void generateReportsByOne(String packageName) {
+        ReportStrategy report = new ItextReport();
+        Reporter reporter = new Reporter(report, packageName);
+        try {
+            reporter.createRationaleReports();
+            System.out.println("Reporte de Rationale creado satistactoriamente.");
+        } catch (Exception e) {
+            System.out.println("No se puede crear el reporte, intenta cerrar el archivo si está abierto.");
+        }
+    }
+
 }

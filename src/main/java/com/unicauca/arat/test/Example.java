@@ -20,8 +20,7 @@ import com.unicauca.arat.business.model.Rationale;
         tacticas = {"Se realiza la siguiente táctica"},
         patrones = {"Se realizan los siguientes patrones"},
         razones = {"Se hizo lo anterior debido a que..."}
-        
 )
 public class Example {
-    
+
 }

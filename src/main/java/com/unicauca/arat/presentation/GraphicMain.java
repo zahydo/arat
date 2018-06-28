@@ -21,7 +21,7 @@ public class GraphicMain extends javax.swing.JFrame {
      */
     public GraphicMain() {
         initComponents();
-	this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -133,28 +133,28 @@ public class GraphicMain extends javax.swing.JFrame {
         // TODO add your handling code here:
         generateReport();
     }//GEN-LAST:event_txtFileNameActionPerformed
-    
-    public void generateReport(){
+
+    public void generateReport() {
         String packageName = txtFileName.getText();
         if (!packageName.equals("")) {
             ReportStrategy report = new ItextReport();
-            Reporter reporter = new Reporter(report,packageName);
+            Reporter reporter = new Reporter(report, packageName);
             if (reporter.createRationaleReportByAll("ArchitecturalRationaleReport")) {
                 JOptionPane.showMessageDialog(null, "Reporte de Rationale creado satistactoriamente.");
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(null, "No se puede crear el reporte, intenta cerrar el archivo si está abierto.");
             }
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Debes ingresar el nombre del paquete raíz del proyecto.");
         }
     }
     //public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+    /* Set the Nimbus look and feel */
+    //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+    /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        /*try {
+     */
+ /*try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
@@ -180,7 +180,7 @@ public class GraphicMain extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        /*java.awt.EventQueue.invokeLater(new Runnable() {
+ /*java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new GraphicMain().setVisible(true);
             }
