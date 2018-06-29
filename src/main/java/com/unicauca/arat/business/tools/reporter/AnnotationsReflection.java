@@ -1,9 +1,7 @@
 package com.unicauca.arat.business.tools.reporter;
 
-//import java.lang.annotation.Annotation;
 import com.unicauca.arat.business.model.Rationale;
 import java.lang.reflect.Method;
-//import java.util.ArrayList;
 import java.util.Set;
 
 import org.reflections.Reflections;
@@ -12,8 +10,11 @@ import org.reflections.scanners.TypeAnnotationsScanner;
 import org.reflections.util.ClasspathHelper;
 import org.reflections.util.ConfigurationBuilder;
 import org.reflections.util.FilterBuilder;
-//import org.unicauca.annotations.model.Component;
 
+/**
+ *
+ * @author sahydo
+ */
 public class AnnotationsReflection {
 
     private final Reflections reflections;

@@ -6,6 +6,10 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Set;
 
+/**
+ *
+ * @author sahydo
+ */
 public class Reporter {
 
     private ReportStrategy reportStrategy;

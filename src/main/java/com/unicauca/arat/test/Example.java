@@ -13,13 +13,13 @@ import com.unicauca.arat.business.model.Rationale;
  */
 @Rationale(
         id = "1",
-        atributos_de_calidad = {Rationale.AtributoDeCalidad.MANTENIBILIDAD, Rationale.AtributoDeCalidad.EFICIENCIA_DESEMPENIO},
-        causas = {"Es necesario que el sistema se pueda modificar a futuro"},
-        registro_de_decisiones = {"Se toma esta decisión"},
-        alternativas = {"Se tienen las siguientes alternativas"},
-        tacticas = {"Se realiza la siguiente táctica"},
-        patrones = {"Se realizan los siguientes patrones"},
-        razones = {"Se hizo lo anterior debido a que..."}
+        quality_attributes = {Rationale.QualityAtribute.MAINTENANCE, Rationale.QualityAtribute.PERFORMANCE},
+        causes = {"Es necesario que el sistema se pueda modificar a futuro"},
+        decisions_record = {"Se toma esta decisión"},
+        alternatives = {"Se tienen las siguientes alternativas"},
+        tactics = {"Se realiza la siguiente táctica"},
+        patterns = {"Se realizan los siguientes patrones"},
+        reasons = {"Se hizo lo anterior debido a que..."}
 )
 public class Example {
 

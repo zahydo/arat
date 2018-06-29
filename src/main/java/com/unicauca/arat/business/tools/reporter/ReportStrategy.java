@@ -4,6 +4,10 @@ import com.unicauca.arat.business.model.Information;
 import com.unicauca.arat.business.model.Rationale;
 import java.util.HashMap;
 
+/**
+ *
+ * @author sahydo
+ */
 public interface ReportStrategy {
 
     public abstract boolean generateReportByAll(HashMap<Information, Rationale> rationaleInformation, String dest);

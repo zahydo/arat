@@ -65,43 +65,43 @@ public class ItextReport implements ReportStrategy {
         try {
             //Atributos de calidad
             document.add(new Paragraph("Atributos de calidad: ", new Font(Font.FontFamily.HELVETICA, 14)));
-            for (Rationale.AtributoDeCalidad attribute : rationale.atributos_de_calidad()) {
+            for (Rationale.QualityAtribute attribute : rationale.quality_attributes()) {
                 quality_attributes.add(attribute.toString());
             }
             document.add(quality_attributes);
             //Causas
             document.add(new Paragraph("Causas: ", new Font(Font.FontFamily.HELVETICA, 14)));
-            for (String causa : rationale.causas()) {
+            for (String causa : rationale.causes()) {
                 causes.add(causa);
             }
             document.add(causes);
             //Tácticas
             document.add(new Paragraph("Tácticas: ", new Font(Font.FontFamily.HELVETICA, 14)));
-            for (String tactica : rationale.tacticas()) {
+            for (String tactica : rationale.tactics()) {
                 tactics.add(tactica);
             }
             document.add(tactics);
             //Patrones
             document.add(new Paragraph("Patrones: ", new Font(Font.FontFamily.HELVETICA, 14)));
-            for (String patron : rationale.patrones()) {
+            for (String patron : rationale.patterns()) {
                 paterns.add(patron);
             }
             document.add(paterns);
             //Alternativas
             document.add(new Paragraph("Alternativas: ", new Font(Font.FontFamily.HELVETICA, 14)));
-            for (String alternativa : rationale.alternativas()) {
+            for (String alternativa : rationale.alternatives()) {
                 alternatives.add(alternativa);
             }
             document.add(alternatives);
             //Decisiones
             document.add(new Paragraph("Decisiones: ", new Font(Font.FontFamily.HELVETICA, 14)));
-            for (String decision : rationale.registro_de_decisiones()) {
+            for (String decision : rationale.decisions_record()) {
                 decisions.add(decision);
             }
             document.add(decisions);
             //Razones
             document.add(new Paragraph("Razones: ", new Font(Font.FontFamily.HELVETICA, 14)));
-            for (String reason : rationale.razones()) {
+            for (String reason : rationale.reasons()) {
                 reasons.add(reason);
             }
             document.add(reasons);
@@ -192,43 +192,43 @@ public class ItextReport implements ReportStrategy {
                     try {
                         //Atributos de calidad
                         currentDocument.add(new Paragraph("Atributos de calidad: ", new Font(Font.FontFamily.HELVETICA, 14)));
-                        for (Rationale.AtributoDeCalidad attribute : rationale.atributos_de_calidad()) {
+                        for (Rationale.QualityAtribute attribute : rationale.quality_attributes()) {
                             quality_attributes.add(attribute.toString());
                         }
                         currentDocument.add(quality_attributes);
                         //Causas
                         currentDocument.add(new Paragraph("Causas: ", new Font(Font.FontFamily.HELVETICA, 14)));
-                        for (String causa : rationale.causas()) {
+                        for (String causa : rationale.causes()) {
                             causes.add(causa);
                         }
                         currentDocument.add(causes);
                         //Tácticas
                         currentDocument.add(new Paragraph("Tácticas: ", new Font(Font.FontFamily.HELVETICA, 14)));
-                        for (String tactica : rationale.tacticas()) {
+                        for (String tactica : rationale.tactics()) {
                             tactics.add(tactica);
                         }
                         currentDocument.add(tactics);
                         //Patrones
                         currentDocument.add(new Paragraph("Patrones: ", new Font(Font.FontFamily.HELVETICA, 14)));
-                        for (String patron : rationale.patrones()) {
+                        for (String patron : rationale.patterns()) {
                             paterns.add(patron);
                         }
                         currentDocument.add(paterns);
                         //Alternativas
                         currentDocument.add(new Paragraph("Alternativas: ", new Font(Font.FontFamily.HELVETICA, 14)));
-                        for (String alternativa : rationale.alternativas()) {
+                        for (String alternativa : rationale.alternatives()) {
                             alternatives.add(alternativa);
                         }
                         currentDocument.add(alternatives);
                         //Decisiones
                         currentDocument.add(new Paragraph("Decisiones: ", new Font(Font.FontFamily.HELVETICA, 14)));
-                        for (String decision : rationale.registro_de_decisiones()) {
+                        for (String decision : rationale.decisions_record()) {
                             decisions.add(decision);
                         }
                         currentDocument.add(decisions);
                         //Razones
                         currentDocument.add(new Paragraph("Razones: ", new Font(Font.FontFamily.HELVETICA, 14)));
-                        for (String reason : rationale.razones()) {
+                        for (String reason : rationale.reasons()) {
                             reasons.add(reason);
                         }
                         currentDocument.add(reasons);

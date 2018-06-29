@@ -13,7 +13,7 @@ import com.unicauca.arat.business.tools.reporter.reportStrategy.ItextReport;
  *
  * @author sahydo
  */
-public class RationaleClient {
+public class RationaleFacade {
 
     private static final String SUCCESS_MESSAGE = "Reporte de Rationale creado satistactoriamente.";
     private static final String FAILURE_MESSAGE = "No se puede crear el reporte, intenta de nuevo cerrando el archivo.";

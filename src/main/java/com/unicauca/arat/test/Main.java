@@ -5,7 +5,7 @@
  */
 package com.unicauca.arat.test;
 
-import com.unicauca.arat.presentation.RationaleClient;
+import com.unicauca.arat.presentation.RationaleFacade;
 
 /**
  *
@@ -17,9 +17,9 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        RationaleClient.openGraphicWindow();
-        RationaleClient.generateReport("com");
-        RationaleClient.generateReportsByOne("com");
+        RationaleFacade.openGraphicWindow();
+        RationaleFacade.generateReport("com");
+        RationaleFacade.generateReportsByOne("com");
     }
 
 }

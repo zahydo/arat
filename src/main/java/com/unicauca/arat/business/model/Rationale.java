@@ -25,26 +25,29 @@ import java.lang.annotation.Target;
 @Target({METHOD, PACKAGE, TYPE})
 public @interface Rationale {
 
-    enum AtributoDeCalidad {
-        ADECUACION_FUNCIONAL, EFICIENCIA_DESEMPENIO, COMPATIBILIDAD, USABILIDAD,
-        FIABILIDAD, SEGURIDAD, MANTENIBILIDAD, PORTABILIDAD
+    // Atributos de calidad del producto basados en la norma ISO 25010 http://iso25000.com/index.php/normas-iso-25000/iso-25010
+    enum QualityAtribute {
+        FUNCTIONAL_ADECUATION, PERFORMANCE, COMPATIBILITY, USABILITY,
+        RELIABILITY, SECURITY, MAINTENANCE, PORTABILITY
     }
 
-    String id() default "";
+    // Atributos miembro de configuración
+    String id() default ""; // 0: Es recomendable establecer un identificador que me sirva para controlar una jerarquía al estilo de un arbol de información del Rationale
 
     boolean hiden() default false;
 
-    AtributoDeCalidad[] atributos_de_calidad(); //1
+    // Atributos miembro de información
+    QualityAtribute[] quality_attributes(); // 1: Establecer el(los) atributo(s) de calidad que se quieren documentar
 
-    String[] causas();//2
+    String[] causes(); //2: Establecer las causas de la necesidad de cumplimiento de el(los) atributo(s) de calidad
 
-    String[] tacticas() default {};//3
+    String[] tactics() default {};//3: Se documentan las tácticas si se aplican
 
-    String[] patrones() default {};//4
+    String[] patterns() default {};//4: En caso de que existan tácticas estas frecuentemente relacionan patrones (las cuales dan forma a estrategias de arquitectura)
 
-    String[] alternativas() default {}; //5
+    String[] alternatives() default {}; //5: Se describen las posibles estrategias para abordar las mismas necesidades de calidad
 
-    String[] registro_de_decisiones();//6
+    String[] decisions_record();//6: Se registran las decisiones tomadas para abordar con los atributos de calidad, las causas, las posibles estrategias y las razones de estas
 
-    String[] razones();//7
+    String[] reasons();//7: Se especifican las razones del porqué se toma una determinada decisión
 }
