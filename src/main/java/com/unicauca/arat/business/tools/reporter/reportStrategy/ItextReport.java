@@ -168,7 +168,7 @@ public class ItextReport implements ReportStrategy {
             Document currentDocument = new Document();
             Rationale rationale = rationaleInformation.get(information);
             try {
-                PdfWriter.getInstance(currentDocument, new FileOutputStream(JavaUtil.setNameFile(rationale.id()+"-"+information.getType()+"-"+information.getName())));
+                PdfWriter.getInstance(currentDocument, new FileOutputStream(JavaUtil.setNameFile(rationale.id() + "-" + information.getType() + "-" + information.getName())));
                 currentDocument.open();
                 createHeader(currentDocument);
             } catch (FileNotFoundException | DocumentException ex) {

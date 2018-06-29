@@ -13,7 +13,13 @@ import com.unicauca.arat.business.tools.reporter.reportStrategy.ItextReport;
  *
  * @author sahydo
  */
-public class RationaleClient extends Thread {
+public class RationaleClient {
+
+    private static final String SUCCESS_MESSAGE = "Reporte de Rationale creado satistactoriamente.";
+    private static final String FAILURE_MESSAGE = "No se puede crear el reporte, intenta de nuevo cerrando el archivo.";
+    private static final String WARNING_MESSAGE = "";
+
+    private static final String DEFAULT_REPORT_NAME = "Architectural Rationale Report";
 
     public static void openGraphicWindow() {
         GraphicMain main = new GraphicMain();
@@ -21,23 +27,22 @@ public class RationaleClient extends Thread {
     }
 
     public static void generateReport(String packageName) {
-        ReportStrategy report = new ItextReport();
-        Reporter reporter = new Reporter(report, packageName);
-        if (reporter.createRationaleReportByAll("ArchitecturalRationaleReport")) {
-            System.out.println("Reporte de Rationale creado satistactoriamente.");
+        ReportStrategy reportStrategy = new ItextReport();
+        Reporter reporter = new Reporter(reportStrategy, packageName);
+        if (reporter.createRationaleReportByAll(DEFAULT_REPORT_NAME)) {
+            System.out.println(SUCCESS_MESSAGE);
         } else {
-            System.out.println("No se puede crear el reporte, intenta cerrar el archivo si está abierto.");
+            System.out.println(FAILURE_MESSAGE);
         }
     }
 
     public static void generateReportsByOne(String packageName) {
-        ReportStrategy report = new ItextReport();
-        Reporter reporter = new Reporter(report, packageName);
-        try {
-            reporter.createRationaleReports();
-            System.out.println("Reporte de Rationale creado satistactoriamente.");
-        } catch (Exception e) {
-            System.out.println("No se puede crear el reporte, intenta cerrar el archivo si está abierto.");
+        ReportStrategy reportStrategy = new ItextReport();
+        Reporter reporter = new Reporter(reportStrategy, packageName);
+        if (reporter.createRationaleReports()) {
+            System.out.println(SUCCESS_MESSAGE);
+        } else {
+            System.out.println(FAILURE_MESSAGE);
         }
     }
 
