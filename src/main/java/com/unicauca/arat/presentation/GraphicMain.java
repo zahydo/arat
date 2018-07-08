@@ -5,9 +5,9 @@
  */
 package com.unicauca.arat.presentation;
 
-import com.unicauca.arat.business.tools.reporter.ReportStrategy;
-import com.unicauca.arat.business.tools.reporter.reportStrategy.ItextReport;
-import com.unicauca.arat.business.tools.reporter.Reporter;
+import com.unicauca.arat.business.model.interfaces.ReportStrategy;
+import com.unicauca.arat.business.model.reporter.ReportStrategyItext_Impl;
+import com.unicauca.arat.business.model.reporter.Reporter;
 import javax.swing.JOptionPane;
 
 /**
@@ -137,7 +137,7 @@ public class GraphicMain extends javax.swing.JFrame {
     public void generateReport() {
         String packageName = txtFileName.getText();
         if (!packageName.equals("")) {
-            ReportStrategy report = new ItextReport();
+            ReportStrategy report = new ReportStrategyItext_Impl();
             Reporter reporter = new Reporter(report, packageName);
             if (reporter.createRationaleReportByAll("ArchitecturalRationaleReport")) {
                 JOptionPane.showMessageDialog(null, "Reporte de Rationale creado satistactoriamente.");

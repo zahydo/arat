@@ -3,9 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.unicauca.arat.test;
-
-import com.unicauca.arat.presentation.RationaleFacade;
+package com.unicauca.arat.presentation;
 
 /**
  *
@@ -17,9 +15,8 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        RationaleFacade.openGraphicWindow();
-        RationaleFacade.generateReport("com");
+        // TODO code application logic here
         RationaleFacade.generateReportsByOne("com");
     }
-
+    
 }

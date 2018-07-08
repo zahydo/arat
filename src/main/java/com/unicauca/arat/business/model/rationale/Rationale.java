@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.unicauca.arat.business.model;
+package com.unicauca.arat.business.model.rationale;
 
 import java.lang.annotation.Documented;
 import static java.lang.annotation.ElementType.METHOD;

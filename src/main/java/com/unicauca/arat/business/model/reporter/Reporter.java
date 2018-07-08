@@ -1,7 +1,10 @@
-package com.unicauca.arat.business.tools.reporter;
+package com.unicauca.arat.business.model.reporter;
 
-import com.unicauca.arat.business.model.Information;
-import com.unicauca.arat.business.model.Rationale;
+import com.unicauca.arat.business.model.interfaces.Reflection;
+import com.unicauca.arat.business.model.util.JavaUtil;
+import com.unicauca.arat.business.model.interfaces.ReportStrategy;
+import com.unicauca.arat.business.model.rationale.Information;
+import com.unicauca.arat.business.model.rationale.Rationale;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Set;
@@ -13,11 +16,11 @@ import java.util.Set;
 public class Reporter {
 
     private ReportStrategy reportStrategy;
-    private final AnnotationsReflection reflection;
+    private final Reflection reflection;
 
     public Reporter(ReportStrategy reportStrategy, String packageName) {
         this.reportStrategy = reportStrategy;
-        this.reflection = new AnnotationsReflection(packageName);
+        this.reflection = new ReflectionJAR_Impl(packageName);
     }
 
     public HashMap<Information, Rationale> getRationaleInformation() {
@@ -52,7 +55,7 @@ public class Reporter {
     }
 
     public boolean createRationaleReportByAll(String nameFile) {
-        boolean flag = false;
+        boolean flag;
         HashMap<Information, Rationale> rationaleInformation = getRationaleInformation();
         flag = reportStrategy.generateReportByAll(rationaleInformation, JavaUtil.setNameFile(nameFile));
         return flag;

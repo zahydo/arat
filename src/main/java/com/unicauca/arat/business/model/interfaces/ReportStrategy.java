@@ -1,7 +1,7 @@
-package com.unicauca.arat.business.tools.reporter;
+package com.unicauca.arat.business.model.interfaces;
 
-import com.unicauca.arat.business.model.Information;
-import com.unicauca.arat.business.model.Rationale;
+import com.unicauca.arat.business.model.rationale.Information;
+import com.unicauca.arat.business.model.rationale.Rationale;
 import java.util.HashMap;
 
 /**

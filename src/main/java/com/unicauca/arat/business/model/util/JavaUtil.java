@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.unicauca.arat.business.tools.reporter;
+package com.unicauca.arat.business.model.util;
 
 import java.io.File;
 
