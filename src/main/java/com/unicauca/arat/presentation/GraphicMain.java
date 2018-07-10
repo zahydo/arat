@@ -5,9 +5,7 @@
  */
 package com.unicauca.arat.presentation;
 
-import com.unicauca.arat.business.model.interfaces.ReportStrategy;
-import com.unicauca.arat.business.model.reporter.ReportStrategyItext_Impl;
-import com.unicauca.arat.business.model.reporter.Reporter;
+import com.unicauca.arat.business.model.util.JavaUtil;
 import javax.swing.JOptionPane;
 
 /**
@@ -137,12 +135,17 @@ public class GraphicMain extends javax.swing.JFrame {
     public void generateReport() {
         String packageName = txtFileName.getText();
         if (!packageName.equals("")) {
-            ReportStrategy report = new ReportStrategyItext_Impl();
-            Reporter reporter = new Reporter(report, packageName);
-            if (reporter.createRationaleReportByAll("ArchitecturalRationaleReport")) {
-                JOptionPane.showMessageDialog(null, "Reporte de Rationale creado satistactoriamente.");
-            } else {
-                JOptionPane.showMessageDialog(null, "No se puede crear el reporte, intenta cerrar el archivo si está abierto.");
+            JavaUtil.ResponseCode response = RationaleFacade.generateReportByAll(packageName);
+            switch (response) {
+                case SUCCESS:
+                    JOptionPane.showMessageDialog(null, "Rationale Report created successfully.");
+                    break;
+                case WARNING:
+                    JOptionPane.showMessageDialog(null, "Rationale Report created without annotations");
+                    break;
+                case FAILURE:
+                    JOptionPane.showMessageDialog(null, "No se puede crear el reporte, intenta cerrar el archivo si está abierto.");
+                    break;
             }
         } else {
             JOptionPane.showMessageDialog(null, "Debes ingresar el nombre del paquete raíz del proyecto.");

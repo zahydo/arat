@@ -6,6 +6,7 @@
 package com.unicauca.arat.business.model.util;
 
 import java.io.File;
+import java.util.logging.Logger;
 
 /**
  *
@@ -13,10 +14,33 @@ import java.io.File;
  */
 public class JavaUtil {
 
+    private static final String SUCCESS_MESSAGE = "Rationale Report created successfully.";
+    private static final String FAILURE_MESSAGE = "Can not create the Rationale Report, please close the file and try again.";
+    private static final String WARNING_MESSAGE = "No annotations @Rationale were detected in the source code.";
+    public static final Logger LOG = Logger.getLogger(Class.class.getName());
+    public static final String DEFAULT_REPORT_NAME = "Architectural Rationale Report";
+
+    public static enum ResponseCode {
+        SUCCESS, WARNING, FAILURE
+    };
+
     public static String setNameFile(String nameFile) {
         nameFile = "reports/" + nameFile + ".pdf";
         File file = new File(nameFile);
         file.getParentFile().mkdirs();
         return nameFile;
     }
+
+    public static void showLogSuccessMessage() {
+        LOG.info(SUCCESS_MESSAGE);
+    }
+
+    public static void showLogWarningMessage() {
+        LOG.warning(WARNING_MESSAGE);
+    }
+
+    public static void showLogFailureMessage() {
+        LOG.severe(FAILURE_MESSAGE);
+    }
+
 }

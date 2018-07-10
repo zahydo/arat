@@ -5,6 +5,8 @@
  */
 package com.unicauca.arat.presentation;
 
+import com.unicauca.arat.business.model.util.JavaUtil;
+
 /**
  *
  * @author sahydo
@@ -16,7 +18,7 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        RationaleFacade.generateReportsByOne("com");
+        JavaUtil.ResponseCode generateReportsByOne = RationaleFacade.generateReportsByOne("com");
     }
     
 }

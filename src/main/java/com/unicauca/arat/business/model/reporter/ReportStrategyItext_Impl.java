@@ -12,6 +12,7 @@ import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.List;
+import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
@@ -65,43 +66,43 @@ public class ReportStrategyItext_Impl implements ReportStrategy {
         List reasons = new List(List.UNORDERED);
         try {
             //Atributos de calidad
-            document.add(new Paragraph("Atributos de calidad: ", new Font(Font.FontFamily.HELVETICA, 14)));
+            document.add(new Paragraph("Quality attributes: ", new Font(Font.FontFamily.HELVETICA, 14)));
             for (Rationale.QualityAtribute attribute : rationale.quality_attributes()) {
                 quality_attributes.add(attribute.toString());
             }
             document.add(quality_attributes);
             //Causas
-            document.add(new Paragraph("Causas: ", new Font(Font.FontFamily.HELVETICA, 14)));
+            document.add(new Paragraph("Causes: ", new Font(Font.FontFamily.HELVETICA, 14)));
             for (String causa : rationale.causes()) {
                 causes.add(causa);
             }
             document.add(causes);
             //Tácticas
-            document.add(new Paragraph("Tácticas: ", new Font(Font.FontFamily.HELVETICA, 14)));
+            document.add(new Paragraph("Tactics: ", new Font(Font.FontFamily.HELVETICA, 14)));
             for (String tactica : rationale.tactics()) {
                 tactics.add(tactica);
             }
             document.add(tactics);
             //Patrones
-            document.add(new Paragraph("Patrones: ", new Font(Font.FontFamily.HELVETICA, 14)));
+            document.add(new Paragraph("Patterns: ", new Font(Font.FontFamily.HELVETICA, 14)));
             for (String patron : rationale.patterns()) {
                 paterns.add(patron);
             }
             document.add(paterns);
             //Alternativas
-            document.add(new Paragraph("Alternativas: ", new Font(Font.FontFamily.HELVETICA, 14)));
+            document.add(new Paragraph("Alternatives: ", new Font(Font.FontFamily.HELVETICA, 14)));
             for (String alternativa : rationale.alternatives()) {
                 alternatives.add(alternativa);
             }
             document.add(alternatives);
             //Decisiones
-            document.add(new Paragraph("Decisiones: ", new Font(Font.FontFamily.HELVETICA, 14)));
+            document.add(new Paragraph("Decisions: ", new Font(Font.FontFamily.HELVETICA, 14)));
             for (String decision : rationale.decisions_record()) {
                 decisions.add(decision);
             }
             document.add(decisions);
             //Razones
-            document.add(new Paragraph("Razones: ", new Font(Font.FontFamily.HELVETICA, 14)));
+            document.add(new Paragraph("Reasons: ", new Font(Font.FontFamily.HELVETICA, 14)));
             for (String reason : rationale.reasons()) {
                 reasons.add(reason);
             }
@@ -125,16 +126,16 @@ public class ReportStrategyItext_Impl implements ReportStrategy {
             cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
             cell.setPadding(2);
             table.addCell(cell);
-            table.addCell("Organización:");
+            table.addCell("Organization:");
             table.addCell("Universidad del Cauca");
-            table.addCell("Descripción:");
-            table.addCell("Librería para gestionar el Rationale Arquitectónico desde el código fuente mediante anotaciones de código Java");
-            table.addCell("Versión:");
+            table.addCell("Description:");
+            table.addCell(".jar library to manage the Architectural Rationale through Java Source Code Annotations");
+            table.addCell("Version:");
             table.addCell("1.0");
-            table.addCell("Autor:");
+            table.addCell("Author:");
             table.addCell("Santiago Hyun Dorado");
-            table.addCell("Lanzamiento:");
-            table.addCell("Julio de 2018");
+            table.addCell("Release date:");
+            table.addCell("July 2018");
             table.setWidthPercentage(100);
             document.add(table);
         } catch (BadElementException ex) {
@@ -145,42 +146,52 @@ public class ReportStrategyItext_Impl implements ReportStrategy {
     }
 
     @Override
-    public boolean generateReportByAll(HashMap<Information, Rationale> rationaleInformation, String dest) {
-        boolean flag = false;
+    public JavaUtil.ResponseCode generateReportByAll(HashMap<Information, Rationale> rationaleInformation, String dest) {
         try {
-            Document document = new Document();
+            JavaUtil.LOG.info("Initializing generation of Rationale Report by all annotations");
+            Document document = new Document(PageSize.A4, 50, 50, 50, 50);
             PdfWriter.getInstance(document, new FileOutputStream(dest));
             document.open();
             createHeader(document);
             createInformation(rationaleInformation, document);
             document.close();
-            flag = true;
+            JavaUtil.LOG.info("Closing generation of Rationale Report by all annotations");
+            if (rationaleInformation.isEmpty()) {
+                return JavaUtil.ResponseCode.WARNING;
+            } else {
+                return JavaUtil.ResponseCode.SUCCESS;
+            }
         } catch (DocumentException | IOException ex) {
             Logger.getLogger(ReportStrategyItext_Impl.class.getName()).log(Level.SEVERE, null, ex);
+            return JavaUtil.ResponseCode.FAILURE;
         }
-        return flag;
     }
 
     @Override
-    public boolean generateReport(HashMap<Information, Rationale> rationaleInformation) {
-        boolean flag = false;
+    public JavaUtil.ResponseCode generateReport(HashMap<Information, Rationale> rationaleInformation) {
         try {
+            JavaUtil.LOG.info("Initializing generation of Rationale Report by annotation");
             for (Map.Entry<Information, Rationale> entry : rationaleInformation.entrySet()) {
                 Information information = entry.getKey();
                 Rationale rationale = entry.getValue();
+                JavaUtil.LOG.info("Add rationale information to report");
                 addInformationAndRationaleToReport(information, rationale);
             }
-            flag = true;
+            JavaUtil.LOG.info("Close generation of Rationale Report by annotation");
+            if (rationaleInformation.isEmpty()) {
+                return JavaUtil.ResponseCode.WARNING;
+            } else {
+                return JavaUtil.ResponseCode.SUCCESS;
+            }
         } catch (Exception e) {
             Logger.getLogger(ReportStrategyItext_Impl.class.getName()).log(Level.SEVERE, null, e);
+            return JavaUtil.ResponseCode.FAILURE;
         }
-        
-        return flag;
 
     }
 
     private void addInformationAndRationaleToReport(Information information, Rationale rat) {
-        Document currentDocument = new Document();
+        Document currentDocument = new Document(PageSize.A4, 50, 50, 50, 50);
         Rationale rationale = rat;
         try {
             PdfWriter.getInstance(currentDocument, new FileOutputStream(JavaUtil.setNameFile(rationale.id() + "-" + information.getType() + "-" + information.getName())));
@@ -206,43 +217,43 @@ public class ReportStrategyItext_Impl implements ReportStrategy {
                 List reasons = new List(List.UNORDERED);
                 try {
                     //Atributos de calidad
-                    currentDocument.add(new Paragraph("Atributos de calidad: ", new Font(Font.FontFamily.HELVETICA, 14)));
+                    currentDocument.add(new Paragraph("Quality Atributes: ", new Font(Font.FontFamily.HELVETICA, 14)));
                     for (Rationale.QualityAtribute attribute : rationale.quality_attributes()) {
                         quality_attributes.add(attribute.toString());
                     }
                     currentDocument.add(quality_attributes);
                     //Causas
-                    currentDocument.add(new Paragraph("Causas: ", new Font(Font.FontFamily.HELVETICA, 14)));
+                    currentDocument.add(new Paragraph("Causes: ", new Font(Font.FontFamily.HELVETICA, 14)));
                     for (String causa : rationale.causes()) {
                         causes.add(causa);
                     }
                     currentDocument.add(causes);
                     //Tácticas
-                    currentDocument.add(new Paragraph("Tácticas: ", new Font(Font.FontFamily.HELVETICA, 14)));
+                    currentDocument.add(new Paragraph("Tactics: ", new Font(Font.FontFamily.HELVETICA, 14)));
                     for (String tactica : rationale.tactics()) {
                         tactics.add(tactica);
                     }
                     currentDocument.add(tactics);
                     //Patrones
-                    currentDocument.add(new Paragraph("Patrones: ", new Font(Font.FontFamily.HELVETICA, 14)));
+                    currentDocument.add(new Paragraph("Patterns: ", new Font(Font.FontFamily.HELVETICA, 14)));
                     for (String patron : rationale.patterns()) {
                         paterns.add(patron);
                     }
                     currentDocument.add(paterns);
                     //Alternativas
-                    currentDocument.add(new Paragraph("Alternativas: ", new Font(Font.FontFamily.HELVETICA, 14)));
+                    currentDocument.add(new Paragraph("Alternatives: ", new Font(Font.FontFamily.HELVETICA, 14)));
                     for (String alternativa : rationale.alternatives()) {
                         alternatives.add(alternativa);
                     }
                     currentDocument.add(alternatives);
                     //Decisiones
-                    currentDocument.add(new Paragraph("Decisiones: ", new Font(Font.FontFamily.HELVETICA, 14)));
+                    currentDocument.add(new Paragraph("Decisions: ", new Font(Font.FontFamily.HELVETICA, 14)));
                     for (String decision : rationale.decisions_record()) {
                         decisions.add(decision);
                     }
                     currentDocument.add(decisions);
                     //Razones
-                    currentDocument.add(new Paragraph("Razones: ", new Font(Font.FontFamily.HELVETICA, 14)));
+                    currentDocument.add(new Paragraph("Reasons: ", new Font(Font.FontFamily.HELVETICA, 14)));
                     for (String reason : rationale.reasons()) {
                         reasons.add(reason);
                     }

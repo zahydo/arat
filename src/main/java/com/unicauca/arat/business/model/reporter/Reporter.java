@@ -54,20 +54,18 @@ public class Reporter {
         return data;
     }
 
-    public boolean createRationaleReportByAll(String nameFile) {
-        boolean flag;
+    public JavaUtil.ResponseCode createRationaleReportByAll(String nameFile) {
+        JavaUtil.ResponseCode response;
         HashMap<Information, Rationale> rationaleInformation = getRationaleInformation();
-        flag = reportStrategy.generateReportByAll(rationaleInformation, JavaUtil.setNameFile(nameFile));
-        return flag;
+        response = reportStrategy.generateReportByAll(rationaleInformation, JavaUtil.setNameFile(nameFile));
+        return response;
     }
 
-    public boolean createRationaleReports() {
-        boolean flag = false;
+    public JavaUtil.ResponseCode createRationaleReports() {
+        JavaUtil.ResponseCode response;
         HashMap<Information, Rationale> rationaleInformation = getRationaleInformation();
-        if (rationaleInformation != null) {
-            flag = reportStrategy.generateReport(rationaleInformation);
-        }
-        return flag;
+        response = reportStrategy.generateReport(rationaleInformation);
+        return response;
     }
 
     public void setStrategy(ReportStrategy strategy) {

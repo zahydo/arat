@@ -39,11 +39,19 @@ public class ReflectionJAR_Impl implements Reflection {
         );
     }
 
+    /**
+     *
+     * @return Set of methods annotated with Rationale
+     */
     @Override
     public Set<Method> getMethodsAnnotatedWithRationale() {
         return reflections.getMethodsAnnotatedWith(Rationale.class);
     }
 
+    /**
+     *
+     * @return Set of classes annotated with Rationale
+     */
     @Override
     public Set<Class<?>> getClasesAnnotatedWhitRationale() {
         return reflections.getTypesAnnotatedWith(Rationale.class);
