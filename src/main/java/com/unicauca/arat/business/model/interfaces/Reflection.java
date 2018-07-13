@@ -5,7 +5,10 @@
  */
 package com.unicauca.arat.business.model.interfaces;
 
+import com.unicauca.arat.business.model.rationale.Information;
+import com.unicauca.arat.business.model.rationale.Rationale;
 import java.lang.reflect.Method;
+import java.util.HashMap;
 import java.util.Set;
 
 /**
@@ -14,7 +17,9 @@ import java.util.Set;
  */
 public interface Reflection {
 
-    public Set<Method> getMethodsAnnotatedWithRationale();
+    public abstract Set<Method> getMethodsAnnotatedWithRationale();
 
-    public Set<Class<?>> getClasesAnnotatedWhitRationale();
+    public abstract Set<Class<?>> getClasesAnnotatedWhitRationale();
+
+    public abstract HashMap<Information, Rationale> getRationaleInformation();
 }

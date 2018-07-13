@@ -5,10 +5,9 @@
  */
 package com.unicauca.arat.presentation;
 
-import com.unicauca.arat.business.model.interfaces.ReportStrategy;
-import com.unicauca.arat.business.model.reporter.ReportStrategyItext_Impl;
 import com.unicauca.arat.business.model.reporter.Reporter;
-import com.unicauca.arat.business.model.util.JavaUtil;
+import com.unicauca.arat.business.util.DefaultValues;
+import com.unicauca.arat.business.util.JavaUtil;
 
 /**
  *
@@ -16,12 +15,7 @@ import com.unicauca.arat.business.model.util.JavaUtil;
  */
 public class RationaleFacade {
 
-    private static ReportStrategy reportStrategy = new ReportStrategyItext_Impl();
     private static Reporter reporter = null;
-
-    public static enum Strategy {
-        ITEXT, IREPORT
-    };
 
     public static void openGraphicWindow() {
         GraphicMain main = new GraphicMain();
@@ -30,30 +24,12 @@ public class RationaleFacade {
 
     /**
      *
-     * @param strategy Estrategia con la que se realiza el reporte
-     */
-    public static void setReportStrategy(Strategy strategy) {
-        switch (strategy) {
-            case ITEXT:
-                reportStrategy = new ReportStrategyItext_Impl();
-                break;
-            case IREPORT:
-                //reportStrategy = new ReportStrategyIReport_Impl();
-                break;
-            default:
-                reportStrategy = new ReportStrategyItext_Impl();
-                break;
-        }
-    }
-
-    /**
-     *
      * @param packageName Package where is generated the file with annotations
      * @return ResponseCode is the response code in the report generation
      */
     public static JavaUtil.ResponseCode generateReportByAll(String packageName) {
-        reporter = new Reporter(reportStrategy, packageName);
-        JavaUtil.ResponseCode response = reporter.createRationaleReportByAll(JavaUtil.DEFAULT_REPORT_NAME);
+        reporter = new Reporter(packageName);
+        JavaUtil.ResponseCode response = reporter.createRationaleReportByAll(DefaultValues.DEFAULT_REPORT_NAME);
         switch (response) {
             case SUCCESS:
                 JavaUtil.showLogSuccessMessage();
@@ -74,7 +50,7 @@ public class RationaleFacade {
      * @return ResponseCode is the response code in the report generation
      */
     public static JavaUtil.ResponseCode generateReportsByOne(String packageName) {
-        reporter = new Reporter(reportStrategy, packageName);
+        reporter = new Reporter(packageName);
         JavaUtil.ResponseCode response = reporter.createRationaleReports();
         switch (response) {
             case SUCCESS:

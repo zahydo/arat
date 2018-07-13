@@ -5,12 +5,23 @@
  */
 package com.unicauca.arat.presentation;
 
-import com.unicauca.arat.business.model.util.JavaUtil;
+import com.unicauca.arat.business.model.rationale.Rationale;
 
 /**
  *
  * @author sahydo
  */
+@Rationale(
+        id = "1",
+        causes = {"causa número 1","otra causa"},
+        quality_attributes = Rationale.QualityAtribute.FUNCTIONAL_ADECUATION,
+        decisions_record = {"Esta es la primera decisión que se tomó"},
+        reasons = {"Por estas razones"},
+        alternatives = {"Tuvimos en cuenta estas alternativas"},
+        patterns = {"La cual considera los siguientes patrones"},
+        tactics = {"De las siguientes tácticas"},
+        hiden = false
+)
 public class Main {
 
     /**
@@ -18,7 +29,7 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        JavaUtil.ResponseCode generateReportsByOne = RationaleFacade.generateReportsByOne("com");
+        RationaleFacade.generateReportByAll("com");
     }
     
 }

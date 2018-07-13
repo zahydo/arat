@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.unicauca.arat.business.model.util;
+package com.unicauca.arat.business.util;
 
 import java.io.File;
 import java.util.logging.Logger;
@@ -17,8 +17,8 @@ public class JavaUtil {
     private static final String SUCCESS_MESSAGE = "Rationale Report created successfully.";
     private static final String FAILURE_MESSAGE = "Can not create the Rationale Report, please close the file and try again.";
     private static final String WARNING_MESSAGE = "No annotations @Rationale were detected in the source code.";
+
     public static final Logger LOG = Logger.getLogger(Class.class.getName());
-    public static final String DEFAULT_REPORT_NAME = "Architectural Rationale Report";
 
     public static enum ResponseCode {
         SUCCESS, WARNING, FAILURE

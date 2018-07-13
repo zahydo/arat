@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.unicauca.arat.business.model.reporter;
+package com.unicauca.arat.business.model.implementations;
 
 import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.Document;
@@ -19,21 +19,21 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.unicauca.arat.business.model.rationale.Information;
 import com.unicauca.arat.business.model.rationale.Rationale;
-import com.unicauca.arat.business.model.util.JavaUtil;
+import com.unicauca.arat.business.util.JavaUtil;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import com.unicauca.arat.business.model.interfaces.ReportStrategy;
 import java.io.FileNotFoundException;
 import java.util.Map;
+import com.unicauca.arat.business.model.interfaces.Report;
 
 /**
  *
  * @author sahydo
  */
-public class ReportStrategyItext_Impl implements ReportStrategy {
+public class Report_Impl_Itext implements Report {
 
     public void createInformation(HashMap<Information, Rationale> rationaleHash, Document document) {
         int cont = 1;
@@ -51,7 +51,7 @@ public class ReportStrategyItext_Impl implements ReportStrategy {
                     cont++;
                 }
             } catch (DocumentException ex) {
-                Logger.getLogger(ReportStrategyItext_Impl.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Report_Impl_Itext.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
@@ -108,7 +108,7 @@ public class ReportStrategyItext_Impl implements ReportStrategy {
             }
             document.add(reasons);
         } catch (DocumentException ex) {
-            Logger.getLogger(ReportStrategyItext_Impl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Report_Impl_Itext.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -139,9 +139,9 @@ public class ReportStrategyItext_Impl implements ReportStrategy {
             table.setWidthPercentage(100);
             document.add(table);
         } catch (BadElementException ex) {
-            Logger.getLogger(ReportStrategyItext_Impl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Report_Impl_Itext.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException | DocumentException ex) {
-            Logger.getLogger(ReportStrategyItext_Impl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Report_Impl_Itext.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -162,7 +162,7 @@ public class ReportStrategyItext_Impl implements ReportStrategy {
                 return JavaUtil.ResponseCode.SUCCESS;
             }
         } catch (DocumentException | IOException ex) {
-            Logger.getLogger(ReportStrategyItext_Impl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Report_Impl_Itext.class.getName()).log(Level.SEVERE, null, ex);
             return JavaUtil.ResponseCode.FAILURE;
         }
     }
@@ -184,7 +184,7 @@ public class ReportStrategyItext_Impl implements ReportStrategy {
                 return JavaUtil.ResponseCode.SUCCESS;
             }
         } catch (Exception e) {
-            Logger.getLogger(ReportStrategyItext_Impl.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(Report_Impl_Itext.class.getName()).log(Level.SEVERE, null, e);
             return JavaUtil.ResponseCode.FAILURE;
         }
 
@@ -198,7 +198,7 @@ public class ReportStrategyItext_Impl implements ReportStrategy {
             currentDocument.open();
             createHeader(currentDocument);
         } catch (FileNotFoundException | DocumentException ex) {
-            Logger.getLogger(ReportStrategyItext_Impl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Report_Impl_Itext.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
             //Información del Rationale
@@ -259,11 +259,11 @@ public class ReportStrategyItext_Impl implements ReportStrategy {
                     }
                     currentDocument.add(reasons);
                 } catch (DocumentException ex) {
-                    Logger.getLogger(ReportStrategyItext_Impl.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(Report_Impl_Itext.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         } catch (DocumentException ex) {
-            Logger.getLogger(ReportStrategyItext_Impl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Report_Impl_Itext.class.getName()).log(Level.SEVERE, null, ex);
         }
         currentDocument.close();
 
