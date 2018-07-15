@@ -13,7 +13,7 @@ import com.unicauca.arat.business.model.rationale.Rationale;
  */
 @Rationale(
         id = "1",
-        causes = {"causa número 1","otra causa"},
+        causes = {"causa número 1", "otra causa"},
         quality_attributes = Rationale.QualityAtribute.FUNCTIONAL_ADECUATION,
         decisions_record = {"Esta es la primera decisión que se tomó"},
         reasons = {"Por estas razones"},
@@ -27,9 +27,21 @@ public class Main {
     /**
      * @param args the command line arguments
      */
+    @Rationale(
+            id = "1",
+            causes = {"causa número 1", "otra causa"},
+            quality_attributes = Rationale.QualityAtribute.FUNCTIONAL_ADECUATION,
+            decisions_record = {"Esta es la primera decisión que se tomó"},
+            reasons = {"Por estas razones"},
+            alternatives = {"Tuvimos en cuenta estas alternativas"},
+            patterns = {"La cual considera los siguientes patrones"},
+            tactics = {"De las siguientes tácticas"},
+            hiden = false
+    )
     public static void main(String[] args) {
         // TODO code application logic here
         RationaleFacade.generateReportByAll("com");
+        RationaleFacade.generateReportsByOne("com");
     }
-    
+
 }

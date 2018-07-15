@@ -34,7 +34,9 @@ public @interface Rationale {
     // Atributos miembro de configuración
     String id() default ""; // 0: Es recomendable establecer un identificador que me sirva para controlar una jerarquía al estilo de un arbol de información del Rationale
 
-    boolean hiden() default false;
+    boolean hiden() default false; // Sirve para ocultar la información
+    
+    String[] links() default {};
 
     // Atributos miembro de información
     QualityAtribute[] quality_attributes(); // 1: Establecer el(los) atributo(s) de calidad que se quieren documentar

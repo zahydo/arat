@@ -14,17 +14,13 @@ import com.unicauca.arat.business.util.DefaultValues;
  *
  * @author sahydo
  */
-public final class Reporter {
+public class Reporter {
 
     private Report reportStrategy;
     private Reflection reflection;
     private HashMap<Information, Rationale> rationaleInformation;
 
     public Reporter(String packageName) {
-        loadRationaleInformation(packageName);
-    }
-
-    public void loadRationaleInformation(String packageNameToScan) {
         switch (DefaultValues.DEFAULT_REPORT) {
             case "Report_Impl_Itext":
                 reportStrategy = new Report_Impl_Itext();
@@ -35,14 +31,15 @@ public final class Reporter {
         }
         switch (DefaultValues.DEFAULT_REFLECTION) {
             case "Reflection_Impl_JAR":
-                reflection = new Reflection_Impl_JAR(packageNameToScan);
+                reflection = new Reflection_Impl_JAR(packageName);
                 break;
             default:
-                reflection = new Reflection_Impl_JAR(packageNameToScan);
+                reflection = new Reflection_Impl_JAR(packageName);
                 break;
         }
         this.rationaleInformation = this.reflection.getRationaleInformation();
     }
+
 
     public JavaUtil.ResponseCode createRationaleReportByAll(String nameFile) {
         JavaUtil.ResponseCode response;
