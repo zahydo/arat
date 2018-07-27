@@ -51,7 +51,7 @@ public class RationaleFacade {
      */
     public static JavaUtil.ResponseCode generateReportsByOne(String packageName) {
         reporter = new Reporter(packageName);
-        JavaUtil.ResponseCode response = reporter.createRationaleReports();
+        JavaUtil.ResponseCode response = reporter.createRationaleReportByOne();
         switch (response) {
             case SUCCESS:
                 JavaUtil.showLogSuccessMessage();

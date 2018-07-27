@@ -47,9 +47,9 @@ public class Reporter {
         return response;
     }
 
-    public JavaUtil.ResponseCode createRationaleReports() {
+    public JavaUtil.ResponseCode createRationaleReportByOne() {
         JavaUtil.ResponseCode response;
-        response = reportStrategy.generateReport(rationaleInformation);
+        response = reportStrategy.generateReportByOne(rationaleInformation);
         return response;
     }
 

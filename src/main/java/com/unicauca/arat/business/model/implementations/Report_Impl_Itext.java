@@ -29,6 +29,7 @@ import java.io.FileNotFoundException;
 import java.util.Map;
 import com.unicauca.arat.business.model.interfaces.Report;
 import com.unicauca.arat.business.util.DefaultValues;
+import java.util.Date;
 
 /**
  * @author sahydo
@@ -188,7 +189,7 @@ public class Report_Impl_Itext implements Report {
     private void addInformationAndRationaleToReport(Information information, Rationale rat, int cont) {
         try {
             Document document = new Document(PageSize.A4, 50, 50, 50, 50);
-            PdfWriter.getInstance(document, new FileOutputStream(JavaUtil.setNameFile(rat.id() + "-" + information.getType() + "-" + information.getName())));
+            PdfWriter.getInstance(document, new FileOutputStream(JavaUtil.setNameFile(new Date().toString()+"/"+rat.id() + "-" + information.getType() + "-" + information.getName())));
             document.open();
             addHeader(document);
             addInformation(document, information, rat, cont);
@@ -231,7 +232,7 @@ public class Report_Impl_Itext implements Report {
     }
 
     @Override
-    public JavaUtil.ResponseCode generateReport(HashMap<Information, Rationale> rationaleInformation) {
+    public JavaUtil.ResponseCode generateReportByOne(HashMap<Information, Rationale> rationaleInformation) {
         try {
             if (rationaleInformation.isEmpty()) {
                 return JavaUtil.ResponseCode.WARNING;

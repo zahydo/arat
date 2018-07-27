@@ -13,5 +13,5 @@ public interface Report {
 
     public abstract JavaUtil.ResponseCode generateReportByAll(HashMap<Information, Rationale> rationaleInformation, String dest);
 
-    public abstract JavaUtil.ResponseCode generateReport(HashMap<Information, Rationale> rationaleInformation);
+    public abstract JavaUtil.ResponseCode generateReportByOne(HashMap<Information, Rationale> rationaleInformation);
 }
