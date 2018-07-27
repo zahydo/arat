@@ -36,8 +36,8 @@ import java.util.Date;
  */
 public class Report_Impl_Itext implements Report {
 
-    private final FontFamily default_font_family = Font.FontFamily.COURIER;
-    private final int default_font_size = 14;
+    private final FontFamily DEFAULT_FONT_FAMILY = Font.FontFamily.COURIER;
+    private final int DEFAULT_FONT_SIZE = 14;
 
     /**
      * @param vector is an array to Objects for convert to Strings
@@ -68,7 +68,7 @@ public class Report_Impl_Itext implements Report {
      * @param table is the table for add a cell with attribute label
      */
     private void addLabelToTable(String label, PdfPTable table) {
-        Paragraph paragraph = new Paragraph(label, new Font(default_font_family, default_font_size));
+        Paragraph paragraph = new Paragraph(label, new Font(DEFAULT_FONT_FAMILY, DEFAULT_FONT_SIZE));
         PdfPCell cell = new PdfPCell(paragraph);
         cell.setHorizontalAlignment(Element.ALIGN_CENTER);
         table.addCell(cell);
@@ -85,16 +85,16 @@ public class Report_Impl_Itext implements Report {
             document.add(new Paragraph("\n"));
             PdfPTable table = new PdfPTable(4);
             table.setWidths(new int[]{1, 1, 1, 1});
-            table.addCell(new Paragraph(DefaultValues.LABEL_RATIONALE, new Font(default_font_family, default_font_size)));
+            table.addCell(new Paragraph(DefaultValues.LABEL_RATIONALE, new Font(DEFAULT_FONT_FAMILY, DEFAULT_FONT_SIZE)));
             table.addCell("" + cont);
-            table.addCell(new Paragraph(DefaultValues.LABEL_IDENTIFIER, new Font(default_font_family, default_font_size)));
+            table.addCell(new Paragraph(DefaultValues.LABEL_IDENTIFIER, new Font(DEFAULT_FONT_FAMILY, DEFAULT_FONT_SIZE)));
             table.addCell(rationale.id());
-            table.addCell(new Paragraph(DefaultValues.LABEL_TYPE, new Font(default_font_family, default_font_size)));
+            table.addCell(new Paragraph(DefaultValues.LABEL_TYPE, new Font(DEFAULT_FONT_FAMILY, DEFAULT_FONT_SIZE)));
             table.addCell(information.getType());
-            table.addCell(new Paragraph(DefaultValues.LABEL_NAME, new Font(default_font_family, default_font_size)));
+            table.addCell(new Paragraph(DefaultValues.LABEL_NAME, new Font(DEFAULT_FONT_FAMILY, DEFAULT_FONT_SIZE)));
             table.addCell(information.getName());
             PdfPCell cell;
-            cell = new PdfPCell(new Paragraph(DefaultValues.LABEL_PATH, new Font(default_font_family, default_font_size)));
+            cell = new PdfPCell(new Paragraph(DefaultValues.LABEL_PATH, new Font(DEFAULT_FONT_FAMILY, DEFAULT_FONT_SIZE)));
             table.addCell(cell);
             cell = new PdfPCell(new Paragraph(information.getPath()));
             cell.setColspan(3);
@@ -153,7 +153,7 @@ public class Report_Impl_Itext implements Report {
             PdfPTable table = new PdfPTable(3);
             table.setWidths(new int[]{1, 2, 3});
             PdfPCell cell;
-            cell = new PdfPCell(new Paragraph(DefaultValues.TITLE, new Font(default_font_family, default_font_size)));
+            cell = new PdfPCell(new Paragraph(DefaultValues.TITLE, new Font(DEFAULT_FONT_FAMILY, DEFAULT_FONT_SIZE)));
             cell.setColspan(3);
             cell.setHorizontalAlignment(Element.ALIGN_CENTER);
             table.addCell(cell);
@@ -162,15 +162,15 @@ public class Report_Impl_Itext implements Report {
             cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
             cell.setPadding(2);
             table.addCell(cell);
-            table.addCell(new Paragraph(DefaultValues.LABEL_ORGANIZATION, new Font(default_font_family, default_font_size)));
+            table.addCell(new Paragraph(DefaultValues.LABEL_ORGANIZATION, new Font(DEFAULT_FONT_FAMILY, DEFAULT_FONT_SIZE)));
             table.addCell(DefaultValues.ORGANIZATION);
-            table.addCell(new Paragraph(DefaultValues.LABEL_DESCRIPTION, new Font(default_font_family, default_font_size)));
+            table.addCell(new Paragraph(DefaultValues.LABEL_DESCRIPTION, new Font(DEFAULT_FONT_FAMILY, DEFAULT_FONT_SIZE)));
             table.addCell(DefaultValues.DESCRIPTION);
-            table.addCell(new Paragraph(DefaultValues.LABEL_VERSION, new Font(default_font_family, default_font_size)));
+            table.addCell(new Paragraph(DefaultValues.LABEL_VERSION, new Font(DEFAULT_FONT_FAMILY, DEFAULT_FONT_SIZE)));
             table.addCell(DefaultValues.VERSION);
-            table.addCell(new Paragraph(DefaultValues.LABEL_AUTHOR, new Font(default_font_family, default_font_size)));
+            table.addCell(new Paragraph(DefaultValues.LABEL_AUTHOR, new Font(DEFAULT_FONT_FAMILY, DEFAULT_FONT_SIZE)));
             table.addCell(DefaultValues.AUTHOR);
-            table.addCell(new Paragraph(DefaultValues.LABEL_CURRENT_DATE, new Font(default_font_family, default_font_size)));
+            table.addCell(new Paragraph(DefaultValues.LABEL_CURRENT_DATE, new Font(DEFAULT_FONT_FAMILY, DEFAULT_FONT_SIZE)));
             table.addCell(DefaultValues.SYSDATE.toGMTString());
             table.setWidthPercentage(100);
             document.add(table);
@@ -189,7 +189,7 @@ public class Report_Impl_Itext implements Report {
     private void addInformationAndRationaleToReport(Information information, Rationale rat, int cont) {
         try {
             Document document = new Document(PageSize.A4, 50, 50, 50, 50);
-            PdfWriter.getInstance(document, new FileOutputStream(JavaUtil.setNameFile(new Date().toString()+"/"+rat.id() + "-" + information.getType() + "-" + information.getName())));
+            PdfWriter.getInstance(document, new FileOutputStream(JavaUtil.setNameFile(DefaultValues.CURRENT_DATE+"/"+rat.id() + "-" + information.getType() + "-" + information.getName())));
             document.open();
             addHeader(document);
             addInformation(document, information, rat, cont);

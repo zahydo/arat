@@ -29,7 +29,7 @@ public class RationaleFacade {
      */
     public static JavaUtil.ResponseCode generateReportByAll(String packageName) {
         reporter = new Reporter(packageName);
-        JavaUtil.ResponseCode response = reporter.createRationaleReportByAll(DefaultValues.DEFAULT_REPORT_NAME);
+        JavaUtil.ResponseCode response = reporter.createRationaleReportByAll(DefaultValues.CURRENT_DATE+"-"+DefaultValues.DEFAULT_REPORT_NAME);
         switch (response) {
             case SUCCESS:
                 JavaUtil.showLogSuccessMessage();

@@ -15,6 +15,7 @@ import java.util.Date;
  */
 public class DefaultValues {
     public static final String DEFAULT_REPORT_NAME = "Architectural Rationale Report";
+    public static final String CURRENT_DATE = new Date().toString();
     public static final String RATIONALE_REPORT_IMAGE = "resources/unicauca.png";
     public static final String DEFAULT_REPORT = Report_Impl_Itext.class.getSimpleName();
     public static final String DEFAULT_REFLECTION = Reflection_Impl_JAR.class.getSimpleName();
