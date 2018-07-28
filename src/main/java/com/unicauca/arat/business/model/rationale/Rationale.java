@@ -25,20 +25,20 @@ import java.lang.annotation.Target;
 @Target({METHOD, PACKAGE, TYPE})
 public @interface Rationale {
 
-    // Atributos de calidad del producto basados en la norma ISO 25010 http://iso25000.com/index.php/normas-iso-25000/iso-25010
+    // Atributos de calidad del producto software basados en la norma ISO 25010 http://iso25000.com/index.php/normas-iso-25000/iso-25010
     enum QualityAtribute {
         FUNCTIONAL_ADECUATION, PERFORMANCE, COMPATIBILITY, USABILITY,
         RELIABILITY, SECURITY, MAINTENANCE, PORTABILITY
     }
 
     // Atributos miembro de configuración
-    String id() default ""; // 0: Es recomendable establecer un identificador que me sirva para controlar una jerarquía al estilo de un arbol de información del Rationale
+    String id() default ""; // 0: Es recomendable establecer un identificador que sirva para controlar una jerarquía al estilo de un arbol de información
 
-    boolean hiden() default false; // Sirve para ocultar la información
+    boolean hiden() default false; // Permite ocultar esta anotación al generar el reporte
     
     String[] links() default {};
 
-    // Atributos miembro de información
+    // Atributos miembro del Rationale
     QualityAtribute[] quality_attributes(); // 1: Establecer el(los) atributo(s) de calidad que se quieren documentar
 
     String[] causes(); //2: Establecer las causas de la necesidad de cumplimiento de el(los) atributo(s) de calidad

@@ -39,8 +39,11 @@ public class Main {
             hiden = false
     )
     public static void main(String[] args) {
-        // TODO code application logic here
+        // Para generar el reporte de todas las anotaciones 
+        // en un solo archivo .pdf
         RationaleFacade.generateReportByAll("com");
+        // Para generar el reporte .pdf por cada una de
+        // las anotaciones.
         RationaleFacade.generateReportsByOne("com");
     }
 
