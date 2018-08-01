@@ -13,14 +13,28 @@ import com.unicauca.arat.business.model.rationale.Rationale;
  */
 @Rationale(
         id = "1",
-        causes = {"causa número 1", "otra causa"},
-        quality_attributes = Rationale.QualityAtribute.FUNCTIONAL_ADECUATION,
-        decisions_record = {"Esta es la primera decisión que se tomó"},
-        reasons = {"Por estas razones"},
-        alternatives = {"Tuvimos en cuenta estas alternativas"},
-        patterns = {"La cual considera los siguientes patrones"},
-        tactics = {"De las siguientes tácticas"},
-        hiden = false
+        hiden = false,
+        quality_attributes = Rationale.QualityAtribute.PERFORMANCE,
+        causes = {"El sistema es un aplicativo web de comercio electrónico muy concurrido "
+                + "en el cual se registran más de 1000 peticiones por minuto.",
+                  "Cada petición al servidor representa una posible compra, es por esto que "
+                + "el sistema debe responder de la manera adecuada y permitir al usuario "
+                + "terminar con su transacción de manera satisfactoria y en el menor tiempo posible"},
+        alternatives = {"Poner un servidor espejo el cual me responda a las peticiones en caso de "
+                        + "que el servidor principal colapse por la cantidad de solicitudes de usuarios.",
+                        "Sacar los componentes que se ven más afectados por el volumen de petición de "
+                        + "los usuarios y definirlos en un servicio aparte",
+                        "Introducir métodos que permitan la concurrencia a través de balanceo de carga.",
+                        "Aumentar la capacidad de recursos físicos"},
+        patterns = {"Ptrón arquitectural Multinivel"},
+        tactics = {"Separación de responsabilidades","abstracción de servicios comunes"},
+        decisions_record = {"Se realizan las consideraciones teniendo en cuenta las ventajas y "
+                        + "desventajas de cada alternativa, a lo cual se llega que es mejor separar "
+                        + "los componentes más afectados en un componente aparte."},
+        reasons = {"Poner un servidor espejo no sería de utilidad ya que en caso de que el servidor "
+                + "espejo falle se perderían las peticiones del usuario al sistema.",
+                    "Respecto a los métodos de balanceo de carga y aumento de los recursos físicos "
+                + "no son posibles debido a que no se cuenta con más recursos físicos disponibles."}
 )
 public class Main {
 
@@ -28,15 +42,16 @@ public class Main {
      * @param args the command line arguments
      */
     @Rationale(
-            id = "1",
-            causes = {"causa número 1", "otra causa"},
-            quality_attributes = Rationale.QualityAtribute.FUNCTIONAL_ADECUATION,
-            decisions_record = {"Esta es la primera decisión que se tomó"},
-            reasons = {"Por estas razones"},
-            alternatives = {"Tuvimos en cuenta estas alternativas"},
-            patterns = {"La cual considera los siguientes patrones"},
-            tactics = {"De las siguientes tácticas"},
-            hiden = false
+            id = "1.1",
+            hiden = false,
+            quality_attributes = Rationale.QualityAtribute.PERFORMANCE,
+            causes = {"Se necesita abstraer servicios en una clase común "
+                    + "para todas las entidades del proyecto"},
+            alternatives = {"Realizar la interfaz con javax ws"},
+            tactics = {"Separación de servicios comunes"},
+            decisions_record = {"Se abstraen todos los servicios en esta clase"},
+            reasons = {"Se requiere que los servicios sean transparentes a "
+                    + "los otros módulos del sistema"}
     )
     public static void main(String[] args) {
         // Para generar el reporte de todas las anotaciones 

@@ -171,7 +171,7 @@ public class Report_Impl_Itext implements Report {
             table.addCell(new Paragraph(DefaultValues.LABEL_AUTHOR, new Font(DEFAULT_FONT_FAMILY, DEFAULT_FONT_SIZE)));
             table.addCell(DefaultValues.AUTHOR);
             table.addCell(new Paragraph(DefaultValues.LABEL_CURRENT_DATE, new Font(DEFAULT_FONT_FAMILY, DEFAULT_FONT_SIZE)));
-            table.addCell(DefaultValues.SYSDATE.toGMTString());
+            table.addCell(DefaultValues.CURRENT_DATE);
             table.setWidthPercentage(100);
             document.add(table);
         } catch (BadElementException ex) {

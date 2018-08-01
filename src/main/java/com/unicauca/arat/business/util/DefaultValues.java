@@ -7,6 +7,7 @@ package com.unicauca.arat.business.util;
 
 import com.unicauca.arat.business.model.implementations.Reflection_Impl_JAR;
 import com.unicauca.arat.business.model.implementations.Report_Impl_Itext;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -15,7 +16,7 @@ import java.util.Date;
  */
 public class DefaultValues {
     public static final String DEFAULT_REPORT_NAME = "Architectural Rationale Report";
-    public static final String CURRENT_DATE = new Date().toString();
+    public static String CURRENT_DATE = currentDate();
     public static final String RATIONALE_REPORT_IMAGE = "resources/unicauca.png";
     public static final String DEFAULT_REPORT = Report_Impl_Itext.class.getSimpleName();
     public static final String DEFAULT_REFLECTION = Reflection_Impl_JAR.class.getSimpleName();
@@ -44,5 +45,8 @@ public class DefaultValues {
     public static final String AUTHOR = "Santiago Hyun Dorado";
     public static final String TITLE = "ARCHITECTURAL RATIONALE ANNOTATIONS TOOL";
     
-    public static Date SYSDATE = new Date();
+    private static String currentDate(){
+        Date date = new Date();
+        return date.toGMTString().replace(":", "-").replace("GTM", "-");
+    }
 }
