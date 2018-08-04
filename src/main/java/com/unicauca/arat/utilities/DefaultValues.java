@@ -3,11 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.unicauca.arat.business.util;
+package com.unicauca.arat.utilities;
 
 import com.unicauca.arat.business.model.implementations.Reflection_Impl_JAR;
 import com.unicauca.arat.business.model.implementations.Report_Impl_Itext;
-import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -18,8 +17,8 @@ public class DefaultValues {
     public static final String DEFAULT_REPORT_NAME = "Architectural Rationale Report";
     public static String CURRENT_DATE = currentDate();
     public static final String RATIONALE_REPORT_IMAGE = "resources/unicauca.png";
-    public static final String DEFAULT_REPORT = Report_Impl_Itext.class.getSimpleName();
-    public static final String DEFAULT_REFLECTION = Reflection_Impl_JAR.class.getSimpleName();
+    public static final String DEFAULT_REPORT = Report_Impl_Itext.class.getName();
+    public static final String DEFAULT_REFLECTION = Reflection_Impl_JAR.class.getName();
     
     public static final String LABEL_ORGANIZATION = "ORGANIZATION:";
     public static final String LABEL_DESCRIPTION = "DESCRIPTION:";

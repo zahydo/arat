@@ -2,7 +2,7 @@ package com.unicauca.arat.business.model.interfaces;
 
 import com.unicauca.arat.business.model.rationale.Information;
 import com.unicauca.arat.business.model.rationale.Rationale;
-import com.unicauca.arat.business.util.JavaUtil;
+import com.unicauca.arat.utilities.JavaUtil;
 import java.util.HashMap;
 
 /**

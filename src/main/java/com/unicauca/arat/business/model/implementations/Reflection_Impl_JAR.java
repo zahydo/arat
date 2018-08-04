@@ -20,26 +20,7 @@ import org.reflections.util.FilterBuilder;
  */
 public class Reflection_Impl_JAR implements Reflection {
 
-    private final Reflections reflections;
-
-    /**
-     *
-     * @param modelPackage specify the package to scan with reflection
-     */
-    public Reflection_Impl_JAR(String modelPackage) {
-        //Se debe especificar el tipo de scanners que se quieren ejecutar (Type y Method)
-        //Se debe especificar la url del paquete que se quiere inspeccionar
-        //se debe agregar un filtro para realizar las busquedas en el paquete
-        reflections = new Reflections(
-                new ConfigurationBuilder()
-                        .setUrls(ClasspathHelper.forPackage(modelPackage))
-                        .setScanners(
-                                new TypeAnnotationsScanner(),
-                                new MethodAnnotationsScanner()
-                        )
-                        .filterInputsBy(new FilterBuilder().includePackage(modelPackage))
-        );
-    }
+    private Reflections reflections;
 
     /**
      *
@@ -94,5 +75,23 @@ public class Reflection_Impl_JAR implements Reflection {
         });
         return data;
     }
-
+    /**
+     *
+     * @param modelPackage specify the package to scan with reflection
+     */
+    @Override
+    public void configureReflection(String modelPackage){
+        //Se debe especificar el tipo de scanners que se quieren ejecutar (Type y Method)
+        //Se debe especificar la url del paquete que se quiere inspeccionar
+        //se debe agregar un filtro para realizar las busquedas en el paquete
+        reflections = new Reflections(
+                new ConfigurationBuilder()
+                        .setUrls(ClasspathHelper.forPackage(modelPackage))
+                        .setScanners(
+                                new TypeAnnotationsScanner(),
+                                new MethodAnnotationsScanner()
+                        )
+                        .filterInputsBy(new FilterBuilder().includePackage(modelPackage))
+        );
+    }
 }

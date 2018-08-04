@@ -19,7 +19,7 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.unicauca.arat.business.model.rationale.Information;
 import com.unicauca.arat.business.model.rationale.Rationale;
-import com.unicauca.arat.business.util.JavaUtil;
+import com.unicauca.arat.utilities.JavaUtil;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
@@ -28,7 +28,7 @@ import java.util.logging.Logger;
 import java.io.FileNotFoundException;
 import java.util.Map;
 import com.unicauca.arat.business.model.interfaces.Report;
-import com.unicauca.arat.business.util.DefaultValues;
+import com.unicauca.arat.utilities.DefaultValues;
 import java.util.Date;
 
 /**

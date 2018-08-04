@@ -6,8 +6,8 @@
 package com.unicauca.arat.presentation;
 
 import com.unicauca.arat.business.model.reporter.Reporter;
-import com.unicauca.arat.business.util.DefaultValues;
-import com.unicauca.arat.business.util.JavaUtil;
+import com.unicauca.arat.utilities.DefaultValues;
+import com.unicauca.arat.utilities.JavaUtil;
 
 /**
  *

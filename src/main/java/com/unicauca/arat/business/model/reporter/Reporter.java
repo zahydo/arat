@@ -1,14 +1,14 @@
 package com.unicauca.arat.business.model.reporter;
 
-import com.unicauca.arat.business.model.implementations.Report_Impl_Itext;
-import com.unicauca.arat.business.model.implementations.Reflection_Impl_JAR;
 import com.unicauca.arat.business.model.interfaces.Reflection;
-import com.unicauca.arat.business.util.JavaUtil;
+import com.unicauca.arat.business.model.interfaces.Report;
 import com.unicauca.arat.business.model.rationale.Information;
 import com.unicauca.arat.business.model.rationale.Rationale;
 import java.util.HashMap;
-import com.unicauca.arat.business.model.interfaces.Report;
-import com.unicauca.arat.business.util.DefaultValues;
+import com.unicauca.arat.utilities.DefaultValues;
+import com.unicauca.arat.utilities.JavaUtil;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -21,23 +21,14 @@ public class Reporter {
     private HashMap<Information, Rationale> rationaleInformation;
 
     public Reporter(String packageName) {
-        switch (DefaultValues.DEFAULT_REPORT) {
-            case "Report_Impl_Itext":
-                reportStrategy = new Report_Impl_Itext();
-                break;
-            default:
-                reportStrategy = new Report_Impl_Itext();
-                break;
+        try {
+            reportStrategy = (Report)Class.forName(DefaultValues.DEFAULT_REPORT).newInstance();
+            reflection = (Reflection)Class.forName(DefaultValues.DEFAULT_REFLECTION).newInstance();
+            reflection.configureReflection(packageName);
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
+            Logger.getLogger(Reporter.class.getName()).log(Level.SEVERE, null, ex);
         }
-        switch (DefaultValues.DEFAULT_REFLECTION) {
-            case "Reflection_Impl_JAR":
-                reflection = new Reflection_Impl_JAR(packageName);
-                break;
-            default:
-                reflection = new Reflection_Impl_JAR(packageName);
-                break;
-        }
-        this.rationaleInformation = this.reflection.getRationaleInformation();
+        rationaleInformation = reflection.getRationaleInformation();
     }
 
 

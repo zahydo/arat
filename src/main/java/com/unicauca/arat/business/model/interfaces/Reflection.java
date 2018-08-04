@@ -22,4 +22,6 @@ public interface Reflection {
     public abstract Set<Class<?>> getClasesAnnotatedWhitRationale();
 
     public abstract HashMap<Information, Rationale> getRationaleInformation();
+    
+    public abstract void configureReflection(String modelPackage);
 }

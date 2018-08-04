@@ -5,7 +5,7 @@
  */
 package com.unicauca.arat.presentation;
 
-import com.unicauca.arat.business.util.JavaUtil;
+import com.unicauca.arat.utilities.JavaUtil;
 import javax.swing.JOptionPane;
 
 /**
