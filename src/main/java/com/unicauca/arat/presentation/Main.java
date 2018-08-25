@@ -13,7 +13,7 @@ import com.unicauca.arat.business.model.rationale.Rationale;
  */
 @Rationale(
         id = "1",
-        hiden = false,
+        hiden = true,
         quality_attributes = Rationale.QualityAtribute.PERFORMANCE,
         causes = {"El sistema es un aplicativo web de comercio electrónico muy concurrido "
                 + "en el cual se registran más de 1000 peticiones por minuto.",
@@ -45,13 +45,15 @@ public class Main {
             id = "1.1",
             hiden = false,
             quality_attributes = Rationale.QualityAtribute.PERFORMANCE,
-            causes = {"Se necesita abstraer servicios en una clase común "
-                    + "para todas las entidades del proyecto"},
-            alternatives = {"Realizar la interfaz con javax ws"},
-            tactics = {"Separación de servicios comunes"},
-            decisions_record = {"Se abstraen todos los servicios en esta clase"},
-            reasons = {"Se requiere que los servicios sean transparentes a "
-                    + "los otros módulos del sistema"}
+            causes = {"Causas que describen la necesidad de calidad"},
+            alternatives = {"Alternativas que se consideran para tomar"
+                    + "una decisión"},
+            tactics = {"Definición de tácticas(opcional)"},
+            patterns = {"Definición de patrones relacionados a las tácticas"},
+            decisions_record = {"Registro de decisiones que se "
+                    + "toman sobre el tiempo"},
+            reasons = {"Razones por las cuales se toman "
+                    + "las anteriores decisiones"}
     )
     public static void main(String[] args) {
         // Para generar el reporte de todas las anotaciones 
