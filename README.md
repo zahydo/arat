@@ -32,3 +32,32 @@ Para generar un archivo con el reporte de todas las anotaciones marcadas en el c
 RationaleFacade.generateReportsByOne(package)
 ```
 Para generar un archivo por cada anotación marcada en el código fuente dentro del **package** especificado.
+
+## Sobre el proyecto 
+Este documento es un artefacto generado en la investigación del uso de las anotaciones de
+código como una herramienta para gestionar conocimiento tácito directamente en el
+código fuente, estableciendo un modelo de Rationale Arquitectónico que permita el
+registro y la gestión de decisiones y razones arquitectónicas, importantes para la evolución y el correcto mantenimiento de cualquier sistema.
+La documentación completa de este proyecto y la investigación se encuentra en el
+siguiente repositorio de github. En este repositorio también se encuentra el link a un sitio web en el cual se puede descargar la herramienta.
+Para las personas interesadas en continuar con el proyecto o realizar contribuciones
+pueden solicitar acceso al repositorio contactando al [autor](http://artemisa.unicauca.edu.co/~santiagodorado/).
+
+License
+----
+
+Apache License 2.0
+
+### Uso permitido
+- Uso comercial  
+- Modificación
+- Distribución
+- Uso de patente
+- Uso privado
+### Limitaciones
+- Uso de marca registrada
+- Responsabilidad
+- Garantía
+### Condiciones
+- Licencia y aviso de copyright
+- Cambios de estado
