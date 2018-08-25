@@ -43,7 +43,7 @@ siguiente repositorio de github. En este repositorio también se encuentra el li
 Para las personas interesadas en continuar con el proyecto o realizar contribuciones
 pueden solicitar acceso al repositorio contactando al [autor](http://artemisa.unicauca.edu.co/~santiagodorado/).
 
-License
+Licencia
 ----
 
 Apache License 2.0
@@ -54,10 +54,12 @@ Apache License 2.0
 - Distribución
 - Uso de patente
 - Uso privado
+
 ### Limitaciones
 - Uso de marca registrada
 - Responsabilidad
 - Garantía
+
 ### Condiciones
 - Licencia y aviso de copyright
 - Cambios de estado
