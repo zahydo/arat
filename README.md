@@ -18,3 +18,17 @@ Esta paradoja está sustentada por las siguientes observaciones manifestadas por
   - El Rationale se considera importante y evidente en el momento en el que se crea. Sin embargo, con el paso del tiempo este generalmente suele ser olvidado.
   - Generalmente las decisiones futuras están basadas en decisiones antiguas, provocando que las decisiones se sobre escriban en el desarrollo del proyecto.
   - Existe la necesidad de que se exprese el conocimiento tácito involucrado en el desarrollo de las actividades por parte de los participantes, sin embargo, interrumpir el flujo de actividades frecuentemente provoca la pérdida de motivación y puede ralentizar el trabajo. Por ello los participantes deciden enfocarse en las actividades "principales" y posponer la documentación del Rationale.
+
+## Instalación
+En el siguiente [link](https://github.com/zahydo/arat-V1.0) encontrará información relacionada con el proyecto, el código fuente, algunas características de la herramienta, el manual de usuario y la herramienta en formato .jar. 
+Descargue el [plugin .jar](https://drive.google.com/file/d/1gLqMFiKjflBLSZgpQiwDm33qMaDioTi3/view) y guárdelo en un lugar en el que recuerde su ubicación. Para completar la instalación por favor consulte el [Manual de usuario](https://github.com/zahydo/arat-V1.0/blob/master/files/Manual%20de%20usuario.pdf).
+Una vez se haya instalado el plugin se debe instanciar una clase con un método **main**, la cual puede generar el reporte mediante la clase *RationaleFacade* 
+```sh
+RationaleFacade.generateReportByAll(package)
+```
+Para generar un archivo con el reporte de todas las anotaciones marcadas en el código fuente dentro del **package** especificado.
+
+```sh
+RationaleFacade.generateReportsByOne(package)
+```
+Para generar un archivo por cada anotación marcada en el código fuente dentro del **package** especificado.
