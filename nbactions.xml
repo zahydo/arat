@@ -14,4 +14,29 @@
                 <exec.executable>java</exec.executable>
             </properties>
         </action>
+        <action>
+            <actionName>CUSTOM-clean install</actionName>
+            <displayName>clean install</displayName>
+            <goals>
+                <goal>clean:clean</goal>
+                <goal>install:install</goal>
+            </goals>
+        </action>
+        <action>
+            <actionName>CUSTOM-assembly</actionName>
+            <displayName>assembly</displayName>
+            <goals>
+                <goal>clean:clean</goal>
+                <goal>assembly:single</goal>
+            </goals>
+        </action>
+        <action>
+            <actionName>CUSTOM-compile install</actionName>
+            <displayName>compile install</displayName>
+            <goals>
+                <goal>clean:clean</goal>
+                <goal>compile</goal>
+                <goal>install</goal>
+            </goals>
+        </action>
     </actions>

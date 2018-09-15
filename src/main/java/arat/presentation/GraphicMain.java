@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.unicauca.arat.presentation;
+package arat.presentation;
 
-import com.unicauca.arat.utilities.JavaUtil;
+import arat.utilities.JavaUtil;
 import javax.swing.JOptionPane;
 
 /**

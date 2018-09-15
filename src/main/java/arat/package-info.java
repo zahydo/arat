@@ -14,7 +14,7 @@
         reasons = "Razones que justifican las decisiones",
         links = "(opcional)" 
 )
-package com.unicauca.arat;
+package arat;
 
-import com.unicauca.arat.business.model.rationale.Rationale;
+import arat.business.model.rationale.Rationale;
 

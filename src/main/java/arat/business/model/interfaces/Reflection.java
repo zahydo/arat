@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.unicauca.arat.business.model.interfaces;
+package arat.business.model.interfaces;
 
-import com.unicauca.arat.business.model.rationale.Information;
-import com.unicauca.arat.business.model.rationale.Rationale;
+import arat.business.model.rationale.Information;
+import arat.business.model.rationale.Rationale;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Set;

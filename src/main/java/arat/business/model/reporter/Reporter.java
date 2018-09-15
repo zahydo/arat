@@ -1,12 +1,12 @@
-package com.unicauca.arat.business.model.reporter;
+package arat.business.model.reporter;
 
-import com.unicauca.arat.business.model.interfaces.Reflection;
-import com.unicauca.arat.business.model.interfaces.Report;
-import com.unicauca.arat.business.model.rationale.Information;
-import com.unicauca.arat.business.model.rationale.Rationale;
+import arat.business.model.interfaces.Reflection;
+import arat.business.model.interfaces.Report;
+import arat.business.model.rationale.Information;
+import arat.business.model.rationale.Rationale;
 import java.util.HashMap;
-import com.unicauca.arat.utilities.DefaultValues;
-import com.unicauca.arat.utilities.JavaUtil;
+import arat.utilities.DefaultValues;
+import arat.utilities.JavaUtil;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.unicauca.arat.utilities;
+package arat.utilities;
 
-import com.unicauca.arat.business.model.implementations.Reflection_Impl_JAR;
-import com.unicauca.arat.business.model.implementations.Report_Impl_Itext;
+import arat.business.model.implementations.Reflection_Impl_JAR;
+import arat.business.model.implementations.Report_Impl_Itext;
 import java.util.Date;
 
 /**

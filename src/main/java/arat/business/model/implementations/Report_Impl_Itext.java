@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.unicauca.arat.business.model.implementations;
+package arat.business.model.implementations;
 
 import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.Document;
@@ -17,9 +17,9 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-import com.unicauca.arat.business.model.rationale.Information;
-import com.unicauca.arat.business.model.rationale.Rationale;
-import com.unicauca.arat.utilities.JavaUtil;
+import arat.business.model.rationale.Information;
+import arat.business.model.rationale.Rationale;
+import arat.utilities.JavaUtil;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
@@ -27,8 +27,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.io.FileNotFoundException;
 import java.util.Map;
-import com.unicauca.arat.business.model.interfaces.Report;
-import com.unicauca.arat.utilities.DefaultValues;
+import arat.business.model.interfaces.Report;
+import arat.utilities.DefaultValues;
 import java.util.Date;
 
 /**
