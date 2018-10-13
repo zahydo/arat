@@ -5,6 +5,7 @@
  */
 package arat.presentation;
 
+import arat.business.model.rationale.Rationale;
 import arat.business.model.reporter.Reporter;
 import arat.utilities.DefaultValues;
 import arat.utilities.JavaUtil;
@@ -13,6 +14,15 @@ import arat.utilities.JavaUtil;
  *
  * @author sahydo
  */
+@Rationale(id = "1.2",
+        hiden = true,
+        quality_attributes = Rationale.QualityAtribute.USABILITY,
+        causes = "Se necesita que el sistema pueda mostrar sus funcionalidades de manera directa",
+        patterns = "Facade",
+        decisions_record = "Se publican métodos estáticos para invocar las funcionalidades",
+        reasons = "Ocultar la complejidad de la generación de los reportes a los sistema clientes que "
+                + "utilizan la herramienta"
+)
 public class RationaleFacade {
 
     private static Reporter reporter = null;
