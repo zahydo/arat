@@ -5,8 +5,8 @@
  */
 package arat.utilities;
 
-import arat.business.model.implementations.Reflection_Impl_JAR;
-import arat.business.model.implementations.Report_Impl_Itext;
+import arat.business.implementations.Reflection_Impl_JAR;
+import arat.business.implementations.Report_Impl_Itext;
 import java.util.Date;
 
 /**

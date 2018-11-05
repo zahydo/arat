@@ -5,8 +5,8 @@
  */
 package arat.presentation;
 
-import arat.business.model.rationale.Rationale;
-import arat.business.model.reporter.Reporter;
+import arat.business.rationale.Rationale;
+import arat.business.reporter.Reporter;
 import arat.utilities.DefaultValues;
 import arat.utilities.JavaUtil;
 

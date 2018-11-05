@@ -15,7 +15,7 @@
         links = {"https://mvnrepository.com/artifact/com.itextpdf/itextpdf"
                 ,"https://mvnrepository.com/artifact/org.reflections/reflections/0.9.10"} 
 )
-package arat.business.model.implementations;
+package arat.business.implementations;
 
-import arat.business.model.rationale.Rationale;
+import arat.business.rationale.Rationale;
 

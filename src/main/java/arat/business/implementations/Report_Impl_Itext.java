@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package arat.business.model.implementations;
+package arat.business.implementations;
 
 import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.Document;
@@ -17,8 +17,8 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-import arat.business.model.rationale.Information;
-import arat.business.model.rationale.Rationale;
+import arat.business.rationale.Information;
+import arat.business.rationale.Rationale;
 import arat.utilities.JavaUtil;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -27,7 +27,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.io.FileNotFoundException;
 import java.util.Map;
-import arat.business.model.interfaces.Report;
+import arat.business.interfaces.Report;
 import arat.utilities.DefaultValues;
 import java.util.Date;
 

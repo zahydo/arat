@@ -15,5 +15,5 @@
 )
 package arat;
 
-import arat.business.model.rationale.Rationale;
+import arat.business.rationale.Rationale;
 

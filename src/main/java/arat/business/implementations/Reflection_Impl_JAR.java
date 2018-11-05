@@ -1,8 +1,8 @@
-package arat.business.model.implementations;
+package arat.business.implementations;
 
-import arat.business.model.interfaces.Reflection;
-import arat.business.model.rationale.Information;
-import arat.business.model.rationale.Rationale;
+import arat.business.interfaces.Reflection;
+import arat.business.rationale.Information;
+import arat.business.rationale.Rationale;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Set;

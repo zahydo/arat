@@ -1,7 +1,7 @@
-package arat.business.model.interfaces;
+package arat.business.interfaces;
 
-import arat.business.model.rationale.Information;
-import arat.business.model.rationale.Rationale;
+import arat.business.rationale.Information;
+import arat.business.rationale.Rationale;
 import arat.utilities.JavaUtil;
 import java.util.HashMap;
 

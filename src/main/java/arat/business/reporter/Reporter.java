@@ -1,9 +1,9 @@
-package arat.business.model.reporter;
+package arat.business.reporter;
 
-import arat.business.model.interfaces.Reflection;
-import arat.business.model.interfaces.Report;
-import arat.business.model.rationale.Information;
-import arat.business.model.rationale.Rationale;
+import arat.business.interfaces.Reflection;
+import arat.business.interfaces.Report;
+import arat.business.rationale.Information;
+import arat.business.rationale.Rationale;
 import java.util.HashMap;
 import arat.utilities.DefaultValues;
 import arat.utilities.JavaUtil;

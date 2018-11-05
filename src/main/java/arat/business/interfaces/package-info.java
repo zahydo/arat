@@ -12,7 +12,7 @@
         decisions_record = "Se separa la lógica de la implementación",
         reasons = "No modificar las clases existentes"
 )
-package arat.business.model.interfaces;
+package arat.business.interfaces;
 
-import arat.business.model.rationale.Rationale;
+import arat.business.rationale.Rationale;
 
