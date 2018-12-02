@@ -21,7 +21,7 @@ Esta paradoja está sustentada por las siguientes observaciones manifestadas por
 
 ## Instalación
 En el siguiente [link](https://github.com/zahydo/arat-V1.0) encontrará información relacionada con el proyecto, el código fuente, algunas características de la herramienta, el manual de usuario y la herramienta en formato .jar. 
-Descargue el [plugin .jar](https://drive.google.com/file/d/1gLqMFiKjflBLSZgpQiwDm33qMaDioTi3/view) y guárdelo en un lugar en el que recuerde su ubicación. Para completar la instalación por favor consulte el [Manual de usuario](https://github.com/zahydo/arat-V1.0/blob/master/files/Manual%20de%20usuario.pdf).
+Descargue el [plugin .jar](https://drive.google.com/open?id=1wQX3y1WgvNLhs5reRQY8NaT0wuIrdMjz) y guárdelo en un lugar en el que recuerde su ubicación. Para completar la instalación por favor consulte el [Manual de usuario](https://github.com/zahydo/arat-V1.0/blob/master/files/Manual%20de%20usuario.pdf).
 Una vez se haya instalado el plugin se debe instanciar una clase con un método **main**, la cual puede generar el reporte mediante la clase *RationaleFacade* 
 ```sh
 RationaleFacade.generateReportByAll(package)
